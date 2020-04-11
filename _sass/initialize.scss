@@ -181,6 +181,10 @@ body {
   }
 }
 
+header .about {
+  display:none;
+}
+
 .post-meta {
   font-size: $small-font-size;
   font-family: $brand-font-family;
@@ -312,6 +316,19 @@ article.post {
   main.page-content {
     margin-left: 260px;
     max-width:720px;
+  }
+
+  header .about {
+    display:block;
+    font-size: $small-font-size;
+    color: $brand-color;
+    
+    p {
+      text-align:justify;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      line-height: 1;
+    }
   }
 }
 
