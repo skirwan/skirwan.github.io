@@ -1,0 +1,26 @@
+---
+layout: default
+---
+
+{{ content }}
+
+{%- for post in site.posts limit: 10 -%}
+<article class="post">
+  <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+  <h2 class="post-title">
+    <a class="post-link" href="{{ post.url | relative_url }}">
+      {{ post.title | escape }}
+    </a>
+  </h2>
+
+  {{ post.content }}
+
+  
+
+  {% if forloop.last %}
+  {%- assign next_post = site.posts | slice: forloop.index | first -%}
+  {%- include paginator.html next=next_post -%}
+  {% endif %}
+</article>
+{%- endfor -%}
+

@@ -18,38 +18,44 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Your awesome title
-email: your-email@example.com
-description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+title: Sean.Kerw.in
+description: >-
+  The Lex Luthor of Earth Q.
+baseurl: ""
+url: "https://skirwan.github.io/"
 
 # Build settings
-theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
 
-# Exclude from processing.
-# The following items will not be processed, by default.
-# Any item listed under the `exclude:` key here will be automatically added to
-# the internal "default list".
-#
-# Excluded items can be processed by explicitly listing the directories or
-# their entries' file path in the `include:` list.
-#
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+social:
+  stackoverflow: "users/89209/skirwan"
+  linkedin: seankerwin
+  github: skirwan
+
+collections:
+  posts:
+    output: true
+    permalink: /archives/:year/:month/:title:output_ext
+  post_alias_year:
+    output: true
+    permalink: /archives/:year/
+  post_alias_month:
+    output: true
+    permalink: /archives/:year/:month/
+
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "post_alias_year"
+    values:
+      layout: "year"
+  -
+    scope:
+      path: ""
+      type: "post_alias_month"
+    values:
+      layout: "month"

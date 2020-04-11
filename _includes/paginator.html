@@ -1,0 +1,27 @@
+<div class="paginator">
+    {%- if include.previous -%}
+    <div class="paginator-item">
+        <span class="label">Newer</span>
+        <a href="{{ include.previous.url | relative_url }}">
+            &laquo; {{ include.previous.title | escape }}
+        </a>
+        <span class="post-meta">
+            {{ include.previous.date | date: "%b %-d, %Y" }}
+        </span>
+    </div>
+    {%- endif -%}
+
+    <div class="paginator-item spacer"></div>
+
+    {%- if include.next -%}
+    <div class="paginator-item">
+        <span class="label">Older</span>
+        <a href="{{ include.next.url | relative_url }}">
+            {{ include.next.title | escape }} &raquo;
+        </a>
+        <span class="post-meta">
+            {{ include.next.date | date: "%b %-d, %Y" }}
+        </span>
+    </div>
+    {%- endif -%}
+</div>

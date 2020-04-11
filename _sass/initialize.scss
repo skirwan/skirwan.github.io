@@ -1,0 +1,329 @@
+@charset "utf-8";
+
+$base-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Segoe UI Symbol", "Segoe UI Emoji", "Apple Color Emoji", Roboto, Helvetica, Arial, sans-serif !default;
+$code-font-family: "Menlo", "Inconsolata", "Consolas", "Roboto Mono", "Ubuntu Mono", "Liberation Mono", "Courier New", monospace;
+$brand-font-family: "Special Elite", monospace;
+$base-font-size:   16px !default;
+$base-font-weight: 400 !default;
+$small-font-size:  $base-font-size * 0.875 !default;
+$base-line-height: 1.5 !default;
+$spacing-unit:     30px !default;
+$table-text-align: left !default;
+
+@mixin relative-font-size($ratio) {
+  font-size: #{$ratio}rem;
+}
+
+
+$brand-color:           #828282 !default;
+$brand-color-light:     lighten($brand-color, 40%) !default;
+$brand-color-dark:      darken($brand-color, 25%) !default;
+
+$site-title-color:      $brand-color-dark !default;
+
+$text-color:            #111111 !default;
+$background-color:      #fdfdfd !default;
+$code-background-color: #eeeeff !default;
+
+$link-base-color:       #2a7ae2 !default;
+$link-visited-color:    darken($link-base-color, 15%) !default;
+$link-hover-color:      $text-color !default;
+
+$border-color-01:       $brand-color-light !default;
+$border-color-02:       lighten($brand-color, 35%) !default;
+$border-color-03:       $brand-color-dark !default;
+
+$table-text-color:      lighten($text-color, 18%) !default;
+$table-zebra-color:     lighten($brand-color, 46%) !default;
+$table-header-bg-color: lighten($brand-color, 43%) !default;
+$table-header-border:   lighten($brand-color, 37%) !default;
+$table-border-color:    $border-color-01 !default;
+
+
+@import "_base";
+
+h1.site-title {
+  margin: 0;
+  padding:0;
+  background:$brand-color;
+  border-radius: 10px;
+  user-select: none;
+  font-family: $brand-font-family;
+  font-size: 90px;
+
+  font-weight: normal;
+  word-break: break-all;
+  vertical-align: top;
+  text-shadow:0 1px 0 $brand-color-light, 0 -1px 0 $brand-color-dark;
+  -webkit-text-stroke: $brand-color-dark 1px;
+
+  overflow: hidden;
+
+  a {
+    text-decoration:none;
+    color:$background-color;  
+    &:hover {
+      text-decoration: none;
+    }
+
+    display:flex;
+    flex-wrap: wrap;
+
+    span {
+      width: 25%;
+      height:70px;
+      line-height: 1;
+      text-align:center;
+      transform: rotate(90deg);
+
+      &:nth-child(1) { order: 4; }
+      &:nth-child(2) { order: 8; }
+      &:nth-child(3) { order: 12; }
+
+      &:nth-child(4) { order: 3; }
+      &:nth-child(5) { order: 7; }
+      &:nth-child(6) { order: 11; }
+
+      &:nth-child(7) { order: 2; }
+      &:nth-child(8) { order: 6; }
+      &:nth-child(9) { order: 10; }
+
+      &:nth-child(10) { order: 1; }
+      &:nth-child(11) { order: 5; }
+      &:nth-child(12) { order: 9; }
+    }
+  }
+}
+
+body {
+  margin:0;
+  padding: 10px;
+}
+
+.svg-icon {
+  width: 16px;
+  height: 16px;
+  fill: $background-color;
+}
+
+.navigation {
+  margin: 10px 0 10px 0;
+  padding: 0 0 10px 0;
+  border-bottom: 1px solid $brand-color;
+  display: flex;
+
+  li {
+    margin: 0;
+    padding: 0;
+    display:flex;
+
+    &:last-child {
+      margin-left: auto;
+      margin-top: auto;
+    }
+  }
+
+  ul { 
+    margin: 0; 
+    padding: 0; 
+    display: flex;
+
+    &.iconlinks {
+      margin-right: 10px;
+
+      a {
+        color: $background-color;
+        background:$brand-color;
+  
+        width: 22px;
+        height: 22px;
+        border-radius:22px;
+
+        display:inline-block;
+        padding: 2px;
+        text-align: center;
+        margin-right: 5px;
+        line-height: 27px;
+
+        &:hover {
+          background-color: $link-hover-color;
+        }
+      }
+    }
+
+    &.textlinks {
+      li:last-child {
+        a::after {
+          content: none;
+        }
+      }
+      a {
+        color:$brand-color;
+        font-family: $brand-font-family;
+        line-height: 16px;
+
+        &:hover {
+          text-decoration: none;
+          color: $link-hover-color;
+
+          &:after {
+            color:$brand-color;
+          }
+        }
+
+        &::after {
+          content: "|";
+          margin-left: 5px;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
+
+.post-meta {
+  font-size: $small-font-size;
+  font-family: $brand-font-family;
+  color: $brand-color;
+}
+
+.page-title {
+  font-weight: 100;
+  font-size: 50px;
+}
+
+.post-title {
+  font-weight: 900;
+  font-size: 20px;
+}
+
+article.post {
+  margin-bottom:10px;
+  border-bottom:1px solid $brand-color-light;
+  padding-bottom:10px;
+
+  &:last-of-type {
+    margin-bottom:0;
+    border-bottom:0;
+  }
+}
+
+.paginator {
+  border-top: 1px solid $brand-color-light;
+  display: flex;
+  flex-wrap: nowrap;
+  padding-top: 10px;
+
+  .paginator-item {
+    display: flex;
+    flex-direction: column;
+
+    .label {
+      font-weight: 500;
+      line-height: 1;
+    }
+    &.spacer {
+      flex-grow: 1;
+    }
+    &:first-child {
+      .label, .post-meta {
+        text-align:right;
+      }
+    }
+  }
+}
+@media (min-width: 576px) {
+  .site-header {
+    width: 240px;
+    margin-right:20px;
+
+    float:left;
+
+    h1.site-title {
+      width: 240px;
+      a {
+        span {
+          height:80px;
+          width: 33.3333%;
+          transform: none;
+          order: unset !important;
+        }
+      }
+    }
+  }
+
+  .navigation {
+    border:none;
+    flex-wrap:wrap;
+    margin-bottom: 10px;
+    padding-bottom:0;
+
+    li:nth-child(2) {
+      margin-left: auto;
+
+      ul {
+        margin-right: 0;
+
+        li:last-child {
+          a {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+    li:last-child {
+      width:100%;
+      margin:0;
+
+      ul {
+        width:100%;
+        margin-top:10px;
+        padding-top:10px;
+        border-top: 1px solid $brand-color;
+        flex-direction: column;
+        li {
+          margin: 0 0 2px 0;
+          padding:5px 5px 5px 20px;
+          width: auto;
+          background: $brand-color-light;
+          border-radius: 2px;
+          a {
+            
+            margin-top:4px;
+            color: $link-base-color;
+            line-height:1;
+
+            &::after {
+              content: none;
+              width:auto;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .site-header {
+    margin-right: 0;
+  }
+
+  main.page-content {
+    margin-left: 260px;
+    max-width:720px;
+  }
+}
+
+@media (min-width: 1260px) {
+  body {
+    width: 720px;
+    margin: 0 auto;
+  }
+  .site-header {
+    margin-left: -260px;
+  }
+  main.page-content {
+    margin:0;
+  }
+}
