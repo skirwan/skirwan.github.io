@@ -1,0 +1,14 @@
+---
+title: "Hurrumph"
+date: 2003-10-03 20:06:00 -0400
+redirect_from:
+  - /archives/2003/10/hurrumph.shtml
+legacy_url: http://seankerwin.org/archives/2003/10/hurrumph.shtml
+---
+<p>For anyone who cares, the 'correct' username and password for the <a href="http://www.underscorehosting.com">Underscore Hosting site</a> are <code>islp4142</code> and <code>f9dds33</code>, respectively.</p>
+
+<p>Unfortunately this information is entirely useless, as my IP isn't acceptable.</p>
+
+<p>New working theory: doing some portscans, it appears that some of these sites have telnet/ssh enabled.  Perhaps with appropriate credentials, such as those of the elusive <a href="http://www.metadex.net/usr/emc2/bio/">Beth</a>, we might obtain shell access to a machine that <i>does</i> have an acceptable IP, and might then use telnet or lynx from there to retrieve useful information?</p>
+
+<p>I'm wondering if there actually is a puzzle here.  It seems inconceivable that someone would dig a rabbit hole quite this deep...</p>

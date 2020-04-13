@@ -1,0 +1,8 @@
+---
+title: "Lazy-R-Us"
+date: 2016-12-02 19:39:33 -0500
+redirect_from:
+  - /archives/2016/12/lazy-r-us.shtml
+legacy_url: http://seankerwin.org/archives/2016/12/lazy-r-us.shtml
+---
+Is this thing on?

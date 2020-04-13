@@ -1,0 +1,14 @@
+---
+title: "Test, Testing, 1, 2, 3... 4?"
+date: 2007-09-23 00:15:53 -0400
+redirect_from:
+  - /archives/2007/09/i_think_i_just.shtml
+legacy_url: http://seankerwin.org/archives/2007/09/i_think_i_just.shtml
+---
+I _think_ I just upgraded to Movable Type 4.1. The real test, of course, is whether you can read this.
+
+'You' in this context being, of course, 'me'.  Because nobody actually reads this.
+
+  
+
+EDIT: Okay, one person reads this.  And I suppose I really ought to thank God for her, because otherwise I'd just be a computer geek talking to himself.  ;)

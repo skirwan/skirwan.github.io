@@ -1,0 +1,20 @@
+---
+title: "AOL 6 with XP"
+date: 2004-03-06 20:54:00 -0500
+redirect_from:
+  - /archives/2004/03/aol_6_with_xp.shtml
+legacy_url: http://seankerwin.org/archives/2004/03/aol_6_with_xp.shtml
+---
+<p>I've got a story.  A funny story, if you're a geek.  Sad one otherwise.  Either way, a story that should be on the Internet somewhere just in case some poor sap out there is hit by the same bug.</p>
+
+<p>So it turns out that AOL for Windows doesn't actually do its own dialing; it depends on a component called the "Remote Access Service".  RAS is also accessible from the command line using the <span class="code">rasphone</span> and <span class="code">rasdial</span> commands, and apparently is the back end to Windows's built-in dial-up system.</p>
+
+<p>It appears that at some point in the recent past, a security hole was found in <span class="code">rasdial</span>.  Microsoft patched it, and all is right with the world.  Yay?  Nay.</p>
+
+<p>AOL 6 is only somewhat compatible with Windows XP.  Apparently some versions of AOL 6 work and some don't, and there's no easy way to tell which you have.  But there exists at least one edition of AOL 6 that works with XP and the <i>old</i> version of <span class="code">rasdial</span> but not the <i>new</i>.</p>
+
+<p>I'm telling this story because I spent the bulk of last Tuesday morning trying to help a friend out with her computer; AOL had suddenly stopped dialing, instead displaying an error message bemoaning it's inability to open the 'phone book file'.  It appears that XP had downloaded and installed the <span class="code">rasdial</span> update in the background, leaving AOL 6 inoperable.  So I installed the AOL update and everything worked fine, right?  Wrong!</p>
+
+<p>The new version of AOL managed to dial, but was unable to set up the proxy network connection needed to provide TCP access to the rest of the system.  The upshot was that AOL content was accessible unless it went through the web browser.  The solution to this is to delete the phonebook file, stored as <span class="code">C:\Documents&nbsp;and&nbsp;Settings\All&nbsp;Users\Application \&nbsp;Data\Microsoft\Network\Connections\Pbk\rasphone.pbk</span>.</p>
+
+<p>Where do you want to go today?</p>

@@ -1,0 +1,10 @@
+---
+title: "It Lives!"
+date: 2007-01-08 20:36:05 -0500
+redirect_from:
+  - /archives/2007/01/it_lives.shtml
+legacy_url: http://seankerwin.org/archives/2007/01/it_lives.shtml
+---
+<a href="http://www.alsoft.com/DiskWarrior/index.html">Hurray for DiskWarrior!</a>
+
+My server (the Skerver?) lives!

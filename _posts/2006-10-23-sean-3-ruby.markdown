@@ -1,0 +1,47 @@
+---
+title: "Sean <3 Ruby"
+date: 2006-10-23 23:48:00 -0400
+redirect_from:
+  - /archives/2006/10/sean_3_ruby.shtml
+legacy_url: http://seankerwin.org/archives/2006/10/sean_3_ruby.shtml
+---
+<p><a href="http://www.ruby-lang.org/">Ruby</a> kicks ass.</p>
+
+<p>That’s the executive summary.  Here’s the full post:</p>
+
+<p>The other day <a href="http://joelonsoftware.com/">The Joel</a> <a href="http://joelonsoftware.com/items/2006/10/12.html">wrote about a book</a> called <a href="http://www.amazon.com/Beyond-Java-Bruce-Tate/dp/0596100949/ref=pd_sxp_f_pt/102-5979582-8351344?ie=UTF8">Beyond Java</a>.  Having recently developed an intense interest in finding the next generation of programming languages (live in C# for a few months and you will too) — and given the fact that Joel’s summary triggered fond memories of the hilarious, memorable, and absolutely spot-on <a href="http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html">Execution in the Kingdom of Nouns</a> —  I decided to give it a shot.</p>
+
+<p>It’s a good book.  A bit indecisive — <i>no one can say, but I think </i>this<i> or maybe </i>this<i> but no one can say</i> — but interesting reading nonetheless.  And very, <i>very</i> up on Ruby.  Particularly <a href="http://www.rubyonrails.org/">Ruby on Rails</a>, which I had been hearing a lot about from various vectors for quite some time now.</p>
+
+<p>So I installed Ruby on Rails, and I followed along with the ‘creating a weblog in 15 minutes’ <a href="http://www.rubyonrails.org/screencasts">screencast</a> and I was (of course) duly impressed.  After dealing with .NET’s mindless <acronym title="Structured Query Language">SQL</acronym> interactivity, <a href="http://wiki.rubyonrails.org/rails/pages/ActiveRecord">Active Record</a> alone was enough to knock my socks off, and the scaffolding support atop that was enough to actually knock my socks back on only to knock them off again in some sort of incredible double-knock-sock-knocking knockapalooza.</p>
+
+<p>But of course, I’d never worked with Ruby before so the demo was inscrutable to me; it was impressive, but if you don’t know Ruby it’s hard to tell what’s magic and what’s, you know, <i>magic</i>.  If you’ve only ever used direct jumps then virtual function dispatch looks pretty damn sexy and <a href="http://en.wikipedia.org/wiki/Clarke's_three_laws">any sufficiently unfamiliar programming language looks like goddamn sorcery until you figure it out</a>.</p>
+
+<p>“So,” sez I, “it must be time to learn Ruby.”</p>
+
+<p><a href="http://poignantguide.net/ruby/chapter-3.html">With cartoon foxes</a>.</p>
+
+<p>This <a href="http://whytheluckystiff.net/">Why guy</a> is — if I might be allowed a brief meander into the vernacular — nucking futz, but he is also endlessly entertaining, far more articulate than most code-friendly persons (Persons of coded descent?  Coding Americans?  Coditos?) ever manage to become, and a pretty talented artist to boot.  And not just ‘a talented artist… for a <i>programmer</i>’, actually, like, you know, <i>talented</i>.  What with the drawing and all.</p>
+
+<p>I think the thing that strikes me the hardest about Ruby is the fact class definitions are no longer magic like they are in every other language I’ve used.  In C++ style languages the <span class="code">class foo {</span> incantation opens a class and the <span class="code">}</span> closes it and in between you’ve got a special list of allowed syntax with specific keywords and constructs and laws and regulations and red tape and occasionally tiny little policemen who tell you that a semicolon was expected and that your vehicle registration has expired and would you <i>please remain in the vehicle</i>.</p>
+
+<p>Maybe that last part was just in my imagination, it’s been a while since I did a lot of heavy lifting in C++, but the point is that it’s a modal language.</p>
+
+<p>Ruby has none of that.  Writing <span class="code">class Contrived</span> doesn’t put your parser into a special mode; if it’s implemented as I assume it is, it operates more like ‘create the class Contrived if it doesn’t already exist, and then push it’s context onto the scope stack’.  And then a few lines later the <span class="code">end</span> pops it back off.  And in between — you can put any damned thing you want.  You can perform I/O.  You can run calculations.  You can <i>call methods that write methods and embed them into your class</i>.  This shit is <i>hot</i>.  You know how your C# classes always have like sixty properties that are all coded like<br />
+<code><pre>
+private int m_Foo;
+public int Foo
+{
+	get
+	{
+		return m_Foo;
+	}
+	set
+	{
+		m_Foo = value;
+	}
+}
+</pre></code>
+and you wish you could just drop in a small script that wrote them all for you?  With Ruby, you <i>can</i>.  Except you don’t <i>need</i> to, because they wrote one for you already!</p>
+
+<p>It’s a language designed to automate that which can be automated.  What’s not to love?</p>

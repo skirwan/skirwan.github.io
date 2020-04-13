@@ -1,0 +1,12 @@
+---
+title: "Magic"
+date: 2004-06-24 16:04:00 -0400
+redirect_from:
+  - /archives/2004/06/magic.shtml
+legacy_url: http://seankerwin.org/archives/2004/06/magic.shtml
+---
+<p>Adding a new category to the site - <a href="http://www.wizards.com/magic/">Magic: the Gathering</a>.  I used to play very regularly in high school, and just about two months ago I got dragged back in - ironically by one of the people who got me hooked on 'cardboard crack' in the first place.</p>
+
+<p>For those unfamiliar with the game, let me try to explain it in a way that doesn't make me sound like an idiot: Imagine a game like chess, where each piece serves a different function.  Now further imagine that instead of only six different types of pieces there are hundreds, and that part of the game is choosing and assembling the set of pieces you'll be using.  Now further imagine that the functions of the pieces are incredibly varied, and interact using a set of rules that really require a computer science background to fully appreciate.</p>
+
+<p>Magic is just like that, except you play it with cards.  Simple, huh?</p>

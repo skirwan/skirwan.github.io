@@ -20,42 +20,19 @@
 
 title: Sean.Kerw.in
 description: >-
-  The Lex Luthor of Earth Q.
+  Writes code.  Former SpaceX, former Bird.  Loves his wife, his cats, and paperclips.
 baseurl: ""
-url: "https://skirwan.github.io/"
+url: "https://sean.kerw.in/"
+permalink: /archives/:year/:month/:title:output_ext
 
 # Build settings
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-redirect-from
 
 social:
-  stackoverflow: "users/89209/skirwan"
+  stackoverflow: "89209"
   linkedin: seankerwin
   github: skirwan
-
-collections:
-  posts:
-    output: true
-    permalink: /archives/:year/:month/:title:output_ext
-  post_alias_year:
-    output: true
-    permalink: /archives/:year/
-  post_alias_month:
-    output: true
-    permalink: /archives/:year/:month/
-
-
-defaults:
-  -
-    scope:
-      path: ""
-      type: "post_alias_year"
-    values:
-      layout: "year"
-  -
-    scope:
-      path: ""
-      type: "post_alias_month"
-    values:
-      layout: "month"
+  twitter: skirwan

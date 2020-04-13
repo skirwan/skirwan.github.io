@@ -1,0 +1,14 @@
+---
+title: "Well Then"
+date: 2004-01-07 13:22:00 -0500
+redirect_from:
+  - /archives/2004/01/well_then.shtml
+legacy_url: http://seankerwin.org/archives/2004/01/well_then.shtml
+---
+<p>I suspect I'm about to get far more traffic than I really want.</p>
+
+<p>Her highness <a href="http://meaghan.hamstergeddon.dyndns.org/">has moved in</a>, and I suspect most of her friends are bright enough to wonder what precisely she's a subdomain of.</p>
+
+<p>Hello, new visitors.  Welcome to the Skirwan's weblog.  I mostly go by Sean 'round here, and I rant and ramble and very rarely make much sense.  The title's in Latin, the writing's inscrutable, and the author's insane.</p>
+
+<p>Now go away.  And don't come back.</p>
