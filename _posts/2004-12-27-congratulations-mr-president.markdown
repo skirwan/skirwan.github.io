@@ -5,6 +5,6 @@ redirect_from:
   - /archives/2004/12/congratulations.shtml
 legacy_url: http://seankerwin.org/archives/2004/12/congratulations.shtml
 ---
-<p><a href="http://news.bbc.co.uk/2/hi/europe/4127203.stm">Yushchenko Wins</a></p>
+[Yushchenko Wins](http://news.bbc.co.uk/2/hi/europe/4127203.stm)
 
-<p>Let's all wear orange and celebrate the ongoing march of democracy.</p>
+Let's all wear orange and celebrate the ongoing march of democracy.

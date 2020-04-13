@@ -5,6 +5,6 @@ redirect_from:
   - /archives/2003/11/xhtml_graffiti.shtml
 legacy_url: http://seankerwin.org/archives/2003/11/xhtml_graffiti.shtml
 ---
-<p>I made my page uglier.</p>
+I made my page uglier.
 
-<p>Yay!</p>
+Yay!

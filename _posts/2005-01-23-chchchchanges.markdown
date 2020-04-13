@@ -5,6 +5,6 @@ redirect_from:
   - /archives/2005/01/chchchchanges.shtml
 legacy_url: http://seankerwin.org/archives/2005/01/chchchchanges.shtml
 ---
-<p>Just updated the site to use the latest version of <a href="http://http://movabletype.org/">Movable Type</a>, primarily for the TypeKey authentication system - I've been having a lot of problems with comment spam.</p>
+Just updated the site to use the latest version of [Movable Type](http://http://movabletype.org/), primarily for the TypeKey authentication system - I've been having a lot of problems with comment spam.
 
-<p>Probably still bugs to be worked out.  Leave comments if you find any.</p>
+Probably still bugs to be worked out. Leave comments if you find any.

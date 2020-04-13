@@ -5,8 +5,8 @@ redirect_from:
   - /archives/2004/05/success.shtml
 legacy_url: http://seankerwin.org/archives/2004/05/success.shtml
 ---
-<p>It would appear, for the moment at least, that this site is the top result from a Google search for 'Sean Kerwin'.</p>
+It would appear, for the moment at least, that this site is the top result from a Google search for 'Sean Kerwin'.
 
-<p>Which is good, because, you know, I'm Sean Kerwin.  Really.</p>
+Which is good, because, you know, I'm Sean Kerwin. Really.
 
-<p>Now I need to find a new hobby, I guess.</p>
+Now I need to find a new hobby, I guess.

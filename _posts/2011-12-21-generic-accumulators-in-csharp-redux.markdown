@@ -5,9 +5,10 @@ redirect_from:
   - /archives/2011/12/generic_accumulators_in_c_redu.shtml
 legacy_url: http://seankerwin.org/archives/2011/12/generic_accumulators_in_c_redu.shtml
 ---
-It turns out one of the most-trafficked pages on this site is [my discussion of generic accumulators in C#](http://seankerwin.org/archives/2008/12/generic_accumulators_in_c.shtml). It occurs to me that it could use a bit of an update, as some newer features like lambdas and the predefined `Func<>` family simplifies things quite a bit:
+It turns out one of the most-trafficked pages on this site is [my discussion of generic accumulators in C#](/archives/2008/12/generic_accumulators_in_c.shtml). It occurs to me that it could use a bit of an update, as some newer features like lambdas and the predefined `Func<>` family simplifies things quite a bit:
 
-`class Program
+```
+class Program
 {
     public static Func<T, T> MakeAccumulator<T>(T start, Func<T, T, T> addFunction)
     {
@@ -40,6 +41,7 @@ It turns out one of the most-trafficked pages on this site is [my discussion of 
         Console.WriteLine("Success!");
         Console.ReadLine();
     }
-}` 
+}
+```
 
 So there's that. Still not terribly useful, but I _do_ like shortening code.

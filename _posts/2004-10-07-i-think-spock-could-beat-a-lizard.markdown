@@ -5,4 +5,4 @@ redirect_from:
   - /archives/2004/10/i_think_spock_c.shtml
 legacy_url: http://seankerwin.org/archives/2004/10/i_think_spock_c.shtml
 ---
-<p>On a <a href="http://samkass.com/theories/RPSSL.html">lighter note</a>.</p>
+On a [lighter note](http://samkass.com/theories/RPSSL.html).

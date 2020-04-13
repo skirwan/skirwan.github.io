@@ -5,5 +5,6 @@ redirect_from:
   - /archives/2004/01/youve_got_to_be.shtml
 legacy_url: http://seankerwin.org/archives/2004/01/youve_got_to_be.shtml
 ---
-<p>...It's too late to be sane.</p>
-<a href="http://www.geekandproud.net/terror/" class="centered"><img alt="Terror Alert Level" src="http://www.geekandproud.net/terror/terror.php" /></a>
+...It's too late to be sane.
+
+[![Terror Alert Level](http://www.geekandproud.net/terror/terror.php)](http://www.geekandproud.net/terror/)

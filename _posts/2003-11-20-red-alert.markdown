@@ -5,12 +5,12 @@ redirect_from:
   - /archives/2003/11/red_alert.shtml
 legacy_url: http://seankerwin.org/archives/2003/11/red_alert.shtml
 ---
-<p>I want a new toy.</p>
+I want a new toy.
 
-<p>I want an application that launches automatically at startup and then just sits there, waiting for something interesting to happen.  When something happens, I want it to tell me; if something's important and I'm not at my computer, I want it to SMS my cell phone.</p>
+I want an application that launches automatically at startup and then just sits there, waiting for something interesting to happen. When something happens, I want it to tell me; if something's important and I'm not at my computer, I want it to SMS my cell phone.
 
-<p>How do I define 'something interesting'?  Email from my parents... major news events... catastrophic hardware failure...  The list goes on.  But the notification method should reflect the importance of the event - a new post on <a href="http://slashdot.org">slashdot</a> should be an unobtrusive green sphere on my screen, while a terrorist attack should fill the screen, beep, and buzz my phone.</p>
+How do I define 'something interesting'? Email from my parents... major news events... catastrophic hardware failure... The list goes on. But the notification method should reflect the importance of the event - a new post on [slashdot](http://slashdot.org) should be an unobtrusive green sphere on my screen, while a terrorist attack should fill the screen, beep, and buzz my phone.
 
-<p>There are things that are kind-a like this already, such as <a href="http://www.iconfactory.com/ip_home.asp">iPulse</a> or <a href="http://www.thinkgeek.com/gadgets/electronic/5da2/">the Ambient Orb</a>, but nothing exactly like what I want.  iPulse will always show up on your desktop, even when everything's going fine, and it doesn't watch the world outside.  The Orb can never grab your attention the way I'd like.</p>
+There are things that are kind-a like this already, such as [iPulse](http://www.iconfactory.com/ip_home.asp) or [the Ambient Orb](http://www.thinkgeek.com/gadgets/electronic/5da2/), but nothing exactly like what I want. iPulse will always show up on your desktop, even when everything's going fine, and it doesn't watch the world outside. The Orb can never grab your attention the way I'd like.
 
-<p>Basically, I just want to  put a bunch of <code>assert</code> statements on the nature of reality.  Seems like a useful thing to do.</p>
+Basically, I just want to put a bunch of `assert` statements on the nature of reality. Seems like a useful thing to do.

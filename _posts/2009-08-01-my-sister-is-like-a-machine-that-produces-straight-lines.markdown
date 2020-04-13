@@ -5,4 +5,4 @@ redirect_from:
   - /archives/2009/08/my_sister_is_like_a_machine_th.shtml
 legacy_url: http://seankerwin.org/archives/2009/08/my_sister_is_like_a_machine_th.shtml
 ---
-![taxes.png](http://seankerwin.org/images/taxes.png)
+![taxes.png](/assets/taxes.png)

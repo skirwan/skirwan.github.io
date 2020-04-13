@@ -5,5 +5,6 @@ redirect_from:
   - /archives/2004/11/vote.shtml
 legacy_url: http://seankerwin.org/archives/2004/11/vote.shtml
 ---
-<p>I'm not going to say 'vote or die', because that's just ridiculous.  I <i>am</i> going to say that George W. Bush, for all his faults, has demonstrated a much broader willingness to put the safety of Americans first, whereas John Kerry has yet to demonstrate anything much grander than a burning yearning to be President.</p>
-<div style="text-align:center; margin:0;"><img alt="W" src="http://hamstergeddon.dyndns.org/images/W.jpg" width="48" height="48" border="0" /></div>
+I'm not going to say 'vote or die', because that's just ridiculous. I _am_ going to say that George W. Bush, for all his faults, has demonstrated a much broader willingness to put the safety of Americans first, whereas John Kerry has yet to demonstrate anything much grander than a burning yearning to be President.
+
+![W](http://hamstergeddon.dyndns.org/images/W.jpg)

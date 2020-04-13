@@ -5,6 +5,6 @@ redirect_from:
   - /archives/2007/01/it_lives.shtml
 legacy_url: http://seankerwin.org/archives/2007/01/it_lives.shtml
 ---
-<a href="http://www.alsoft.com/DiskWarrior/index.html">Hurray for DiskWarrior!</a>
+[Hurray for DiskWarrior!](http://www.alsoft.com/DiskWarrior/index.html)  
 
 My server (the Skerver?) lives!

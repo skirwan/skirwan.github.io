@@ -5,10 +5,10 @@ redirect_from:
   - /archives/2004/01/well_then.shtml
 legacy_url: http://seankerwin.org/archives/2004/01/well_then.shtml
 ---
-<p>I suspect I'm about to get far more traffic than I really want.</p>
+I suspect I'm about to get far more traffic than I really want.
 
-<p>Her highness <a href="http://meaghan.hamstergeddon.dyndns.org/">has moved in</a>, and I suspect most of her friends are bright enough to wonder what precisely she's a subdomain of.</p>
+Her highness [has moved in](http://meaghan.hamstergeddon.dyndns.org/), and I suspect most of her friends are bright enough to wonder what precisely she's a subdomain of.
 
-<p>Hello, new visitors.  Welcome to the Skirwan's weblog.  I mostly go by Sean 'round here, and I rant and ramble and very rarely make much sense.  The title's in Latin, the writing's inscrutable, and the author's insane.</p>
+Hello, new visitors. Welcome to the Skirwan's weblog. I mostly go by Sean 'round here, and I rant and ramble and very rarely make much sense. The title's in Latin, the writing's inscrutable, and the author's insane.
 
-<p>Now go away.  And don't come back.</p>
+Now go away. And don't come back.

@@ -3,7 +3,7 @@
     <div class="paginator-item">
         <span class="label">Newer</span>
         <a href="{{ include.previous.url | relative_url }}">
-            {{ include.previous.title | escape }}
+            <span>{{ include.previous.title | markdownify | remove: '<p>' | remove: '</p>' }}</span>
         </a>
         <span class="post-meta">
             {{ include.previous.date | date: "%b %-d, %Y" }}
@@ -17,7 +17,7 @@
     <div class="paginator-item">
         <span class="label">Older</span>
         <a href="{{ include.next.url | relative_url }}">
-            {{ include.next.title | escape }}
+            <span>{{ include.next.title | markdownify | remove: '<p>' | remove: '</p>' }}</span>
         </a>
         <span class="post-meta">
             {{ include.next.date | date: "%b %-d, %Y" }}

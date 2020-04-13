@@ -5,4 +5,4 @@ redirect_from:
   - /archives/2005/05/happy_memorial.shtml
 legacy_url: http://seankerwin.org/archives/2005/05/happy_memorial.shtml
 ---
-<p><img src="http://hamstergeddon.dyndns.org/images/flag.gif" alt="There's a flag here.  Turn on images to see it." /></p>
+![There's a flag here.  Turn on images to see it.](http://hamstergeddon.dyndns.org/images/flag.gif)

@@ -5,8 +5,8 @@ redirect_from:
   - /archives/2005/01/in_the_year_200.shtml
 legacy_url: http://seankerwin.org/archives/2005/01/in_the_year_200.shtml
 ---
-<p><a href="http://www.eursoc.com/news/fullstory.php/aid/697">An interesting article</a>.  (Found via <a href="http://www.instapundit.com/">the Instapundit</a>, of course).</p>
+[An interesting article](http://www.eursoc.com/news/fullstory.php/aid/697). (Found via [the Instapundit](http://www.instapundit.com/), of course).
 
-<p>It makes me wonder what maps will look like in twenty years.  At the moment we usually put the Atlantic in the middle, with the US and Europe flanking and everywhere else on the fringe.  Maybe we should trying putting the Pacific in the center instead?</p>
+It makes me wonder what maps will look like in twenty years. At the moment we usually put the Atlantic in the middle, with the US and Europe flanking and everywhere else on the fringe. Maybe we should trying putting the Pacific in the center instead?
 
-<p>Interesting side note: whichever ocean is the center, the US has shoreline.  If I had more of a background in geopolitics, I'd hypothesize that this is the real reason for the endurance of American relevancy.  If.</p>
+Interesting side note: whichever ocean is the center, the US has shoreline. If I had more of a background in geopolitics, I'd hypothesize that this is the real reason for the endurance of American relevancy. If.

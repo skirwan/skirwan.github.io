@@ -5,10 +5,12 @@ redirect_from:
   - /archives/2003/10/quoth_sean_w00t.shtml
 legacy_url: http://seankerwin.org/archives/2003/10/quoth_sean_w00t.shtml
 ---
-<p>Dark.<br />
-Tower.<br />
-Five.</p>
+Dark.  
 
-<p>Soon.</p>
+Tower.  
 
-<p>Yay!</p>
+Five.
+
+Soon.
+
+Yay!

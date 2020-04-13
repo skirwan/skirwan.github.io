@@ -5,12 +5,12 @@ redirect_from:
   - /archives/2004/08/blow_wind_come.shtml
 legacy_url: http://seankerwin.org/archives/2004/08/blow_wind_come.shtml
 ---
-<p>Obviously I perished in the storm.</p>
+Obviously I perished in the storm.
 
-<p>No?  Okay, I lived, but the server died.</p>
+No? Okay, I lived, but the server died.
 
-<p>No?  Power's out?  No 'net access?</p>
+No? Power's out? No 'net access?
 
-<p>Hrrm.</p>
+Hrrm.
 
-<p>Eat, it Charley!  Yeah!  <i>King Kong</i> ain't got <i>shit</i> on me!</p>
+Eat, it Charley! Yeah! _King Kong_ ain't got _shit_ on me!

@@ -5,40 +5,40 @@ redirect_from:
   - /archives/2006/03/seans_new_lapto.shtml
 legacy_url: http://seankerwin.org/archives/2006/03/seans_new_lapto.shtml
 ---
-<p>Today when Sean came home, he saw a fantabulous sight!</p>
+Today when Sean came home, he saw a fantabulous sight!
 
-<p><img src="http://seankerwin.org/images/MacBook1.jpg" alt="The FedEx Fairy left boxes!" /></p>
+![The FedEx Fairy left boxes!](/assets/MacBook1.jpg)
 
-<p>Sean was so happy that he did that growling-squinting thing that almost resembles a human smile!</p>
+Sean was so happy that he did that growling-squinting thing that almost resembles a human smile!
 
-<p><img src="http://seankerwin.org/images/MacBook2.jpg" alt="Either happy or preparing to bit your neck" /></p>
+![Either happy or preparing to bit your neck](/assets/MacBook2.jpg)
 
-<p>Sean was sad, because the pictures taken by his cell phone camera are <i>very</i> lousy.  But then Sean had an idea!</p>
+Sean was sad, because the pictures taken by his cell phone camera are _very_ lousy. But then Sean had an idea!
 
-<p>"Hey, doesn't this new MacBook have a camera built in?" said Sean.  And sure enough, it did!</p>
+"Hey, doesn't this new MacBook have a camera built in?" said Sean. And sure enough, it did!
 
-<p><img src="http://seankerwin.org/images/MacBook3.jpg" alt="And *crack* went the lense!" /></p>
+![And *crack* went the lense!](/assets/MacBook3.jpg)
 
-<p>It was very cool.  It was so cool that Sean's brain began to overheat!  And his head began to melt!</p>
+It was very cool. It was so cool that Sean's brain began to overheat! And his head began to melt!
 
-<p><img src="http://seankerwin.org/images/MacBook4.jpg" alt="PhotoBooth is a wonderful waste of time" /></p>
+![PhotoBooth is a wonderful waste of time](/assets/MacBook4.jpg)
 
-<p>"These pictures are so much better than the first two!" said Sean.</p>
+"These pictures are so much better than the first two!" said Sean.
 
-<p>"You're dead to me, cell phone!"</p>
+"You're dead to me, cell phone!"
 
-<p><img src="http://seankerwin.org/images/MacBook5.jpg" alt="It shall sleep with the fishes!" /></p>
+![It shall sleep with the fishes!](/assets/MacBook5.jpg)
 
-<p>"Poor Mr. MacBook Pro can see everything but himself!"  noticed Sean.</p>
+"Poor Mr. MacBook Pro can see everything but himself!" noticed Sean.
 
-<p>This made Sean sad, so Sean decided to help Mr. MacBook Pro out.  Sean took Mr. MacBook Pro to the magic mirror in the enchanted hallway by the front door.</p>
+This made Sean sad, so Sean decided to help Mr. MacBook Pro out. Sean took Mr. MacBook Pro to the magic mirror in the enchanted hallway by the front door.
 
-<p><img src="http://seankerwin.org/images/MacBook6.jpg" alt="It is a very bright screen" /></p>
+![It is a very bright screen](/assets/MacBook6.jpg)
 
-<p>"Here you are, Mr. MacBook Pro!"</p>
+"Here you are, Mr. MacBook Pro!"
 
-<p>Just then, a radiation wave hit, and Sean and Mr. MacBook Pro got shot through a Wormhole!</p>
+Just then, a radiation wave hit, and Sean and Mr. MacBook Pro got shot through a Wormhole!
 
-<p><img src="http://seankerwin.org/images/MacBook7.jpg" alt="I am not John Crichton" /></p>
+![I am not John Crichton](/assets/MacBook7.jpg)
 
-<p>Now Sean is on a living ship full of strange alien life forms.  But that is a story for another day!</p>
+Now Sean is on a living ship full of strange alien life forms. But that is a story for another day!

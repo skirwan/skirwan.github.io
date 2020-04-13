@@ -5,8 +5,8 @@ redirect_from:
   - /archives/2005/03/history_is_funn.shtml
 legacy_url: http://seankerwin.org/archives/2005/03/history_is_funn.shtml
 ---
-<p><a href="http://www.history.navy.mil/danfs/cfa9/skirwan.htm">Huh</a>.</p>
+[Huh](http://www.history.navy.mil/danfs/cfa9/skirwan.htm).
 
-<p>Apparently in my previous life, I was a boat.</p>
+Apparently in my previous life, I was a boat.
 
-<p>Go figure.</p>
+Go figure.

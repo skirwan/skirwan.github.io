@@ -5,8 +5,8 @@ redirect_from:
   - /archives/2006/06/devils_advocate.shtml
 legacy_url: http://seankerwin.org/archives/2006/06/devils_advocate.shtml
 ---
-<p>Not to go starting an argument here, but…</p>
+Not to go starting an argument here, but…
 
-<p>Imagine a group of straight people got together and organized a ‘straight pride’ week, during which they felt everyone should celebrate heterosexual culture and recognize the important contributions straight people have made to society.</p>
+Imagine a group of straight people got together and organized a ‘straight pride’ week, during which they felt everyone should celebrate heterosexual culture and recognize the important contributions straight people have made to society.
 
-<p>How would that make you feel?</p>
+How would that make you feel?

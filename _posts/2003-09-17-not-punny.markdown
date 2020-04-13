@@ -5,6 +5,6 @@ redirect_from:
   - /archives/2003/09/not_punny.shtml
 legacy_url: http://seankerwin.org/archives/2003/09/not_punny.shtml
 ---
-<p>I need to get a Razor Scooter, or some rollerblades, or something.  Hell, even a Segway would do.</p>
+I need to get a Razor Scooter, or some rollerblades, or something. Hell, even a Segway would do.
 
-<p>I just hate walking everywhere.  It's so damned <i>pedestrian</i>.</p>
+I just hate walking everywhere. It's so damned _pedestrian_.

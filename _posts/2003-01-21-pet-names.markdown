@@ -5,4 +5,4 @@ redirect_from:
   - /archives/2003/01/pet_names.shtml
 legacy_url: http://seankerwin.org/archives/2003/01/pet_names.shtml
 ---
-<p><img src="../images/rover.gif" alt="" class="rightfloating" />SDI/Phison wants to look at my hyperactive Rover (which, come to think of it, I haven't mentioned yet), so I got a replacement.  This one's held together by itself instead of by Scotch tape, so I guess it's an upgrade.  I can't wait to get a production unit with final plastics.  And a Rover t-shirt.  In fact, I almost want the t-shirt more.  That dog is <i>so fricking cute</i>!  It's like puppies and kittens fighting over beanie babies.</p>
+![](/assets/rover.gif)SDI/Phison wants to look at my hyperactive Rover (which, come to think of it, I haven't mentioned yet), so I got a replacement. This one's held together by itself instead of by Scotch tape, so I guess it's an upgrade. I can't wait to get a production unit with final plastics. And a Rover t-shirt. In fact, I almost want the t-shirt more. That dog is _so fricking cute_! It's like puppies and kittens fighting over beanie babies.

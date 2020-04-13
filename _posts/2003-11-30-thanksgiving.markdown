@@ -5,10 +5,10 @@ redirect_from:
   - /archives/2003/11/thanksgiving.shtml
 legacy_url: http://seankerwin.org/archives/2003/11/thanksgiving.shtml
 ---
-<p>And so it ends.</p>
+And so it ends.
 
-<p>Far too much flying, far too much driving, far too much getting-up-early.  But fun nonetheless.</p>
+Far too much flying, far too much driving, far too much getting-up-early. But fun nonetheless.
 
-<p>I've decided that I need to update the <a href="http://www.cs.duke.edu/~ola/lovejoy/football.html">Family Football page</a> - Owen hasn't updated lately, and I suspect with the two little ones he hasn't got the time.</p>
+I've decided that I need to update the [Family Football page](http://www.cs.duke.edu/~ola/lovejoy/football.html) - Owen hasn't updated lately, and I suspect with the two little ones he hasn't got the time.
 
-<p>This was one of the largest turnouts we've had (41, I think?) despite a few notable absences.</p>
+This was one of the largest turnouts we've had (41, I think?) despite a few notable absences.

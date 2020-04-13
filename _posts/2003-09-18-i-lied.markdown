@@ -5,8 +5,8 @@ redirect_from:
   - /archives/2003/09/i_lied.shtml
 legacy_url: http://seankerwin.org/archives/2003/09/i_lied.shtml
 ---
-<p>Well, it wasn't actually a lie.  I did say 'probably'.</p>
+Well, it wasn't actually a lie. I did say 'probably'.
 
-<p>Once an idea gets in my head it has a tendency to just bounce around randomly, often knocking other things over, until I let it escape into the world.</p>
+Once an idea gets in my head it has a tendency to just bounce around randomly, often knocking other things over, until I let it escape into the world.
 
-<p>And the answer is no, for whatever that's worth.</p>
+And the answer is no, for whatever that's worth.

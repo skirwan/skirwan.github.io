@@ -5,24 +5,24 @@ redirect_from:
   - /archives/2006/02/net_from_a_mac.shtml
 legacy_url: http://seankerwin.org/archives/2006/02/net_from_a_mac.shtml
 ---
-<p>I'm currently taking a course in .NET programming.  It has been -- and continues to be -- an interesting experience.</p>
+I'm currently taking a course in .NET programming. It has been -- and continues to be -- an interesting experience.
 
-<p>I've been a Mac guy for as long as I've been using computers.  I <i>can</i> use Windows, and in fact I get paid to do so on occasion, but for my own purposes I avoid Windows like the plague.  Nonetheless, it's nothing dogmatic with me -- unlike some Mac users, I don't feel like we need to wage a holy war against Redmond.  The world has far too many Jihads ongoing already.</p>
+I've been a Mac guy for as long as I've been using computers. I _can_ use Windows, and in fact I get paid to do so on occasion, but for my own purposes I avoid Windows like the plague. Nonetheless, it's nothing dogmatic with me -- unlike some Mac users, I don't feel like we need to wage a holy war against Redmond. The world has far too many Jihads ongoing already.
 
-<p>Despite my familiarity with Windows, my programming experience has been uniformly Mac- and *nix- based.  I'm familiar enough with MFC to recognize when a program is the result of a severely lazy developer overusing it, but not enough to actually create a Win32 binary.</p>
+Despite my familiarity with Windows, my programming experience has been uniformly Mac- and \*nix- based. I'm familiar enough with MFC to recognize when a program is the result of a severely lazy developer overusing it, but not enough to actually create a Win32 binary.
 
-<p><b> First Impressions</b></p>
+**First Impressions**
 
-<p>First off, Visual Studio is a very nice IDE.  Microsoft's code completion -- 'Intellisense' -- is very well done.  If I'm working with strings, Visual Studio can show me the various manipulation methods about as quickly as Xcode can show me the selectors for an NSString -- despite the fact that <i>Visual Studio is running in emulation</i>.  Apple really needs to get their ass in gear on that count.</p>
+First off, Visual Studio is a very nice IDE. Microsoft's code completion -- 'Intellisense' -- is very well done. If I'm working with strings, Visual Studio can show me the various manipulation methods about as quickly as Xcode can show me the selectors for an NSString -- despite the fact that _Visual Studio is running in emulation_. Apple really needs to get their ass in gear on that count.
 
-<p>The Windows Forms Designer, to put things simply, sucks.  It's like somebody looked at HyperCard but never got to actually use it, and then went off to clone it.  If you want to change the text in a label, you need to view its properties and type into a tiny little box -- if you just double-click expecting to edit the text, it brings up your source file and lets you write a procedure to be invoked... <i>when the user clicks on your label</i>.</p>
+The Windows Forms Designer, to put things simply, sucks. It's like somebody looked at HyperCard but never got to actually use it, and then went off to clone it. If you want to change the text in a label, you need to view its properties and type into a tiny little box -- if you just double-click expecting to edit the text, it brings up your source file and lets you write a procedure to be invoked... _when the user clicks on your label_.
 
-<p>That's right: <i>when the user clicks on your label</i>.  The reason that so many Windows apps have crummy UIs is suddenly becoming more clear to me.  It's a pretty basic fact of consistent UI design that labels don't actually do anything; the fact that the default path in Microsoft's standard development tool makes them into buttons is, to say the least, alarming.  Making things work the wrong way should never be the default behavior -- in fact, doing something as nonstandard as this should be bloody hard work that only the most dedicated hackers could pull off</p>
+That's right: _when the user clicks on your label_. The reason that so many Windows apps have crummy UIs is suddenly becoming more clear to me. It's a pretty basic fact of consistent UI design that labels don't actually do anything; the fact that the default path in Microsoft's standard development tool makes them into buttons is, to say the least, alarming. Making things work the wrong way should never be the default behavior -- in fact, doing something as nonstandard as this should be bloody hard work that only the most dedicated hackers could pull off
 
-<p>Also interesting with Windows Forms is the inability to decouple control from view (a la MVC).  Each form (which in the real world we call a 'window') is an object, and each UI element is configured to execute a method of this object as it's manipulated.  I'm not saying this is <i>wrong</i>, per se, but it takes some getting used to.</p>
+Also interesting with Windows Forms is the inability to decouple control from view (a la MVC). Each form (which in the real world we call a 'window') is an object, and each UI element is configured to execute a method of this object as it's manipulated. I'm not saying this is _wrong_, per se, but it takes some getting used to.
 
-<p>Speaking of things that take some getting used to, these form objects are also in charge of creating the windows and UI elements they control.  Unlike the Mac, where windows are generated by system calls based on data files (either resources with the Toolbox or Nibs in Carbon or Cocoa), the Windows Form Designer just generates code and inserts it into your source file.</p>
+Speaking of things that take some getting used to, these form objects are also in charge of creating the windows and UI elements they control. Unlike the Mac, where windows are generated by system calls based on data files (either resources with the Toolbox or Nibs in Carbon or Cocoa), the Windows Form Designer just generates code and inserts it into your source file.
 
-<p>I can see benefits both ways.  The biggest problem with the Windows method is that it isn't hard to get the two out-of-sync to the point where things become difficult, so you're better off just leaving the generated code alone -- which begs the question, why is the code generated at all?  Why doesn't the form editor just directly produce the MSIL and hand it to the compiler to insert into your binary?</p>
+I can see benefits both ways. The biggest problem with the Windows method is that it isn't hard to get the two out-of-sync to the point where things become difficult, so you're better off just leaving the generated code alone -- which begs the question, why is the code generated at all? Why doesn't the form editor just directly produce the MSIL and hand it to the compiler to insert into your binary?
 
-<p>More to come.  Stay tuned.</p>
+More to come. Stay tuned.

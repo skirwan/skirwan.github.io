@@ -270,7 +270,7 @@ redirect_from:
   </h5>
   <h4>
     <a href="{{ post.url }}">
-      {{ post.title }}
+      {{ post.title | markdownify | remove: '<p>' | remove: '</p>' }}
     </a>
   </h4>
 </article>

@@ -5,6 +5,6 @@ redirect_from:
   - /archives/2005/02/huh.shtml
 legacy_url: http://seankerwin.org/archives/2005/02/huh.shtml
 ---
-<p>I would <i>really</i> like to know whether or not <a href="http://newyorker.com/shouts/content/?050214sh_shouts">this</a> is a joke.</p>
+I would _really_ like to know whether or not [this](http://newyorker.com/shouts/content/?050214sh_shouts) is a joke.
 
-<p><i>Really</i>.</p>
+_Really_.

@@ -5,6 +5,6 @@ redirect_from:
   - /archives/2004/07/bump.shtml
 legacy_url: http://seankerwin.org/archives/2004/07/bump.shtml
 ---
-<p>I haven't posted anything of substance in a while.  Mainly because I haven't anything of substance to say.  Got bored and played with CSS for a while the other day; there's now finally a second theme for the site.  It's missing a few minor niceties (the elements I use for styling quotes and code blocks are missing, for one) but on the whole it look quite nice in Safari and Mozilla derivatives.  IE 5 Mac basically just puts up a window and vomits on it however.  And I've yet to summon sufficient intestinal fortitude to see what the Windows IE versions do with it.</p>
+I haven't posted anything of substance in a while. Mainly because I haven't anything of substance to say. Got bored and played with CSS for a while the other day; there's now finally a second theme for the site. It's missing a few minor niceties (the elements I use for styling quotes and code blocks are missing, for one) but on the whole it look quite nice in Safari and Mozilla derivatives. IE 5 Mac basically just puts up a window and vomits on it however. And I've yet to summon sufficient intestinal fortitude to see what the Windows IE versions do with it.
 
-<p>Ah well.  Am I the only one periodically refreshing the <a href="http://www.apple.com/">Apple homepage</a> throughout the day in hopes of <a href="http://www.apple.com/itunes/100million/">precisely timing an iTunes purchase</a>?  I am?</p>
+Ah well. Am I the only one periodically refreshing the [Apple homepage](http://www.apple.com/) throughout the day in hopes of [precisely timing an iTunes purchase](http://www.apple.com/itunes/100million/)? I am?

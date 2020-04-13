@@ -5,8 +5,8 @@ redirect_from:
   - /archives/2003/01/back_2_good.shtml
 legacy_url: http://seankerwin.org/archives/2003/01/back_2_good.shtml
 ---
-<p>Well, I've started slacking off already.</p>
+Well, I've started slacking off already.
 
-<p>>But I have an excuse!  My computer finally got delivered today, after being stuck in shipping purgatory for over a week.  Damned marketoids couldn't seem to understand that those of us who do <i>work</i> with <i>computers</i> need to <i>have</i> their <i>computer</i> to do <i>work</i>.  Frelling morons.</p>
+\>But I have an excuse! My computer finally got delivered today, after being stuck in shipping purgatory for over a week. Damned marketoids couldn't seem to understand that those of us who do _work_ with _computers_ need to _have_ their _computer_ to do _work_. Frelling morons.
 
-<p>But anyway, I'm back to something approaching a workable work environment, all things considered.  Was busy all day, setting my system back up and verifying that everything arrived in the appropriate number of pieces.  Had time to do some more testing with FirePower, and it looks like my initial dismay/shock/fear wasn't entirely founded; although a FirePower on the S800 card has slower writes than a PrinceDrive on the internal S400, it's still faster than a PrinceDrive on the S800 card.  Conclusion seems to be that the S800 card or the PCI bus (or even the S800 OHCI drivers?) is at fault, rather than the OXUF922.  Which is good, 'cause that firmware is <i>messy</i>.</p>
+But anyway, I'm back to something approaching a workable work environment, all things considered. Was busy all day, setting my system back up and verifying that everything arrived in the appropriate number of pieces. Had time to do some more testing with FirePower, and it looks like my initial dismay/shock/fear wasn't entirely founded; although a FirePower on the S800 card has slower writes than a PrinceDrive on the internal S400, it's still faster than a PrinceDrive on the S800 card. Conclusion seems to be that the S800 card or the PCI bus (or even the S800 OHCI drivers?) is at fault, rather than the OXUF922. Which is good, 'cause that firmware is _messy_.

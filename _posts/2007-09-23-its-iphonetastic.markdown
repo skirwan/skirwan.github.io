@@ -5,4 +5,4 @@ redirect_from:
   - /archives/2007/09/its_iphonetasti.shtml
 legacy_url: http://seankerwin.org/archives/2007/09/its_iphonetasti.shtml
 ---
-Posting from my iPhone.  Neat.
+Posting from my iPhone. Neat.

@@ -5,6 +5,6 @@ redirect_from:
   - /archives/2003/10/titles_are_hard.shtml
 legacy_url: http://seankerwin.org/archives/2003/10/titles_are_hard.shtml
 ---
-<p>Follow up question; if I don't believe in Heaven or Hell, why do I consistently capitalize said metaphysical destinations?</p>
+Follow up question; if I don't believe in Heaven or Hell, why do I consistently capitalize said metaphysical destinations?
 
-<p>Introduced MCK to her birthday present.  I'll leave it to her whether to unveil it publically, but she did seem to like it.</p>
+Introduced MCK to her birthday present. I'll leave it to her whether to unveil it publically, but she did seem to like it.

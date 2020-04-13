@@ -5,6 +5,6 @@ redirect_from:
   - /archives/2006/02/master_of_my_ow.shtml
 legacy_url: http://seankerwin.org/archives/2006/02/master_of_my_ow.shtml
 ---
-<p>Welcome to <a href="http://seankerwin.org">SeanKerwin.org</a>.</p>
+Welcome to [SeanKerwin.org]().
 
-<p>I feel so special.</p>
+I feel so special.

@@ -5,10 +5,10 @@ redirect_from:
   - /archives/2007/06/iclan_121.shtml
 legacy_url: http://seankerwin.org/archives/2007/06/iclan_121.shtml
 ---
-You'd think if you were going to make drastic changes to a pseudo-XML data feed, you'd at least talk to the maker of the only actual client to your feed.  I really need an eye-rolling emoticon.
+You'd think if you were going to make drastic changes to a pseudo-XML data feed, you'd at least talk to the maker of the only actual client to your feed. I really need an eye-rolling emoticon.  
 
-Anyhoo.  <a href="iClan/" >iClan</a>.
+Anyhoo. [iClan](iClan/).  
 
-I wonder how many people get that the iClan web page is a great big parody of self-important shareware software download pages?  More importantly, I wonder how many people get that the <a href="Stylunk/">Stylunk</a> page is a parody of the main page of my blog, and that the <a href="iClan/">iClan</a> page is a parody of <i>that</i>.
+I wonder how many people get that the iClan web page is a great big parody of self-important shareware software download pages? More importantly, I wonder how many people get that the [Stylunk](Stylunk/) page is a parody of the main page of my blog, and that the [iClan](iClan/) page is a parody of _that_.  
 
-Come to think of it, I also wonder how many people realize that South Park is making fun of them and how many people understand that the GoF design patterns were meant as description rather than prescription...  I should put together a list and start figuring these things out...
+Come to think of it, I also wonder how many people realize that South Park is making fun of them and how many people understand that the GoF design patterns were meant as description rather than prescription... I should put together a list and start figuring these things out...

@@ -14,14 +14,13 @@ $table-text-align: left !default;
   font-size: #{$ratio}rem;
 }
 
-
 $link-base-color:       #28537C;
-$brand-color:           #66002A;
+$brand-color:           #510021;
 $brand-color-light:     #eee5e8;
 // $brand-color-dark:      #3a1728;
 // $link-base-color:       #999966;
 $code-background-color: #d2e2f1;
-$accent-color: #514300;
+$accent-color: #715e00;
 
 
 $brand-color:           #828282 !default;
@@ -285,6 +284,13 @@ article.post {
     }
   }
 }
+p img:only-child,
+p a:only-child img:only-child {
+  display:block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
 @media (max-width: 575px) {
   .archive-year {
     width: 60px;
