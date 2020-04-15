@@ -1,0 +1,719 @@
+---
+layout: default
+---
+<style>
+.stylunk-header {
+	display:flex;
+}
+.stylunk-header > div:first-child > p {
+	font-size: 80%;
+}
+.stylunk-header > div:first-child > p:last-child {
+	margin-bottom: 0;
+
+}
+.stylunk-page-title {
+	white-space: nowrap;
+}
+.stylunk-page-title img {
+	height: 50px;
+	display: inline-block;
+	vertical-align: top;
+}
+.master-panel {
+	display:flex;
+}
+.master-panel-preview {
+	flex-direction: column;
+	margin-bottom: 10px;
+}
+.preview-row {
+	display:flex;
+	flex-wrap: wrap;
+}
+.master-panel h3 {
+	padding-top:0;
+	margin-top:0;
+	color:#666;
+	font-size:17px;
+	letter-spacing:1px;
+	border: 1px solid white;
+	border-bottom:1px solid black;
+	line-height:22px;
+	font-weight: 100;
+}
+.picker-block {
+	line-height:22px;
+	display: flex;
+	flex-direction: column;
+	white-space: nowrap;
+	flex-basis: 20%;
+	min-width: 200px;
+}
+.picker-block .row {
+	display:flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+}
+.picker-block .label {
+	text-align:right;
+	font-size:13px;
+	color:black;
+	flex-basis: 50%;
+	flex-shrink: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-weight: 100;
+	font-stretch: ultra-condensed;
+	letter-spacing: -1px;
+}
+label {
+	font-size:13px;
+	color:black;
+}
+.disabled label {
+	color:rgba(0,0,0,0.5);
+}
+.cloak-box {
+	line-height: 20px;
+	height:20px;
+	padding-left:10px;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-moz-user-drag: none;
+	-webkit-user-drag: none;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.picker-block .link {
+	margin-left:10px;
+	flex-basis: 50%;
+	flex-shrink: 0;
+	flex-grow: 1;
+}
+.button {
+	font-size:12px;
+	border:1px solid white;
+	background: #DDD;
+	border-radius: 10px;
+	text-decoration:none;
+	color:black;
+	font-weight:100;
+	text-overflow: ellipsis;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-moz-user-drag: none;
+	-webkit-user-drag: none;
+	outline:none;
+}
+.button:hover, .button:active, .button.active {
+	color:#00E;
+}
+.button.preview-button.active {
+	color:black;
+}
+.button.disable {
+	opacity:0.5;
+	cursor:default;
+}
+.button.disable:hover {
+	color:black;
+}
+.button:active, .button.active {
+	background-color: #AAA;
+}
+.button.disable:active {
+	background-color:transparent;
+}
+.dropdown {
+	display:block;
+	margin-bottom:5px;
+	height:20px;
+	padding-left:10px;
+	padding-right:20px;
+	line-height:21px;
+	position:relative;
+}
+.dropdown:after {
+	content:"";
+	position:absolute;
+	top:7px;
+	right:7px;
+	border-top:6px solid black;
+	border-right:6px solid transparent;
+	border-left:6px solid transparent;
+	z-index:102;
+}
+.dropdown:before {
+	content:"";
+	position:absolute;
+	top:8px;
+	right:7px;
+	border-top:6px solid rgba(255,255,255,0.5);
+	border-right:6px solid transparent;
+	border-left:6px solid transparent;
+	z-index:101;
+}
+.dropdown:hover:after, .dropdown:active:after, .dropdown.active:after {
+	border-top:6px solid #00E;
+}
+.space {
+	height:20px;
+}
+.swatch {
+	width:auto;
+}
+.dye-block {
+	flex-basis: 40%;
+	min-width:130px;
+	flex-grow: 1;
+}
+.recipe-block {
+	padding-top: 7px;
+	flex-basis: 100%;
+}
+.recipe-block input {
+	margin:0;
+}
+.recipe-block span {
+	font-size:11px;
+	color: black;
+	-webkit-text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	-moz-text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+.button-panel {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+}
+.button-panel .preview-button {
+	flex-basis: 45%;
+}
+.preview-button {
+	display:block;
+	height:70px;
+	text-align:center;
+	flex-basis: 70px;
+	flex-grow: 1;
+	position:relative;
+	overflow:hidden;
+}
+.preview-button canvas {
+	position:absolute;
+	left:50%;
+	top:0;
+	height:70px;
+	margin-left:-35px;
+}
+.preview-button span.name {
+	line-height:10px;
+	position:absolute;
+	display:block;
+	left:0;
+	right:0;
+	height:30px;
+	bottom:0;
+	font-weight:100;
+	font-size:11px;
+	line-height:30px;
+	text-align: center;
+	color:#222;
+}
+#Preview {
+	height:250px;
+	border:1px solid #666;
+	background:#DDF;
+	position:relative;
+	overflow:hidden;
+	flex-shrink: 1;
+	flex-grow: 10;
+	min-width: 300px;
+}
+canvas {
+	image-rendering: optimizeSpeed;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -webkit-optimize-contrast;
+	image-rendering: -o-crisp-edges;
+	image-rendering: pixelated;
+	-ms-interpolation-mode: nearest-neighbor;
+}
+#Preview canvas {
+	position: absolute;
+	left: 50%;
+	margin-left: -212.5px;
+}
+.well {
+	position:absolute;
+	left:0;
+	right:0;
+	top:0;
+	bottom:0;
+	z-index:1000;
+}
+.preview-palette {
+	position:absolute;
+	right:0;
+	left:0;
+	bottom:0;
+	height:26px;
+	padding:5px;
+	border-top:1px solid #eee;
+	background:#ccc;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-moz-user-drag: none;
+	-webkit-user-drag: none;
+}
+
+.ad {
+	display:block;
+	background:black;
+	width:300px;
+	height:252px;
+	flex-shrink: 0;
+	flex-grow: 1;
+	flex-basis: 300px;
+}
+#Donate {
+	width:142px;
+	min-width: 142px;
+	height:78px;
+	background-color:transparent;
+	background-image:url("/assets/stylunk/stylunk_says.png");
+	background-repeat:no-repeat;
+	background-position:100% 100%;
+	position:relative;
+	margin-left:auto;
+	margin-top:auto;
+}
+#Donate input {
+	position:absolute;
+	top:10px;
+	right:40px;
+}
+.picker-view {
+	position:absolute;
+	z-index: 201;
+	padding: 5px;
+	border-radius: 5px;
+	top: 100%;
+	margin-top:2px;
+	left: -1px;
+	background: white;
+	border: 1px solid black;
+}
+
+.picker-view > div {
+	display:flex;
+	flex-wrap:wrap;
+}
+.picker-view .preview-button {
+	flex-grow: 0;
+}
+.picker-view > div:first-child > .preview-button:only-child {
+	flex-grow: 1;
+}
+
+.picker-view h3 {
+	font-size: 12px;
+	line-height: 12px;
+	font-weight: 100;
+	width: 100%;
+	text-transform: uppercase;
+	margin-bottom: 0;
+	border: none;
+	margin-top: 10px;
+}
+.circular-slider {
+	display:inline-block;
+	height:18px;
+	width:18px;
+	border:2px solid rgba(255,255,255,0.5);
+	-webkit-border-radius:20px;
+	-moz-border-radius:20px;
+	border-radius:20px;
+	position:relative;
+	margin-top: 1px;
+	margin-left: 4px;
+}
+.circular-slider:after {
+	content:"";
+	height:18px;
+	width:18px;
+	border:2px solid #888;
+	position:absolute;
+	top:-3px;
+	left:-2px;
+	-webkit-border-radius:20px;
+	-moz-border-radius:20px;
+	border-radius:20px;
+	z-index:101;
+}
+.knob {
+	display:block;
+	width:8px;
+	height:8px;
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	border-radius:10px;
+	margin-top:-5px;
+	margin-left:-5px;
+	z-index:102;
+	border:1px solid rgba(0,0,0,0.5);
+	-webkit-box-shadow:0 -1px 0 0 rgba(0,0,0,0.5), 0 0 3px 0 white, inset 0 10px 10px -10px rgba(255,255,255,0.5), inset 0 -10px 10px -10px rgba(0,0,0,0.5);
+	-moz-box-shadow:0 -1px 0 0 rgba(0,0,0,0.5), 0 0 3px 0 white, inset 0 10px 10px -10px rgba(255,255,255,0.5), inset 0 -10px 10px -10px rgba(0,0,0,0.5);
+	box-shadow:0 -1px 0 0 rgba(0,0,0,0.5), 0 0 3px 0 white, inset 0 10px 10px -10px rgba(255,255,255,0.5), inset 0 -10px 10px -10px rgba(0,0,0,0.5);
+	background:#999;
+	
+	position:relative;
+	z-index:1001;
+}
+.circular-slider .knob {
+	position:absolute;
+	top:20px;
+	left:10px;
+	margin-top:-6px;
+	margin-left:-6px;
+}
+.knob:hover {
+	background:#88F;
+}
+.knob.active {
+	background:blue;
+}
+.preview-palette select {
+	position:absolute;
+	z-index:1001;
+	left:40px;
+	top:6px;
+}
+.zoom-slider {
+	float:right;
+	margin-top:8px;
+	margin-right:20px;
+	width:100px;
+	height:10px;
+	background:url(/assets/stylunk/zoombar.svg);
+	position:relative;
+}
+.zoom-slider .knob {
+	position:absolute;
+	left:100px;
+	top:0;
+	height:16px;
+	margin-right:-6px;
+	margin-top:-5px;
+}
+.zoom-slider .label {
+	position:absolute;
+	left:100%;
+	top:-10px;
+	height:30px;
+	line-height:30px;
+	margin-left:4px;
+	color:#888;
+	-webkit-text-shadow:0 1px 0 rgba(255,255,255,0.5);
+	-moz-text-shadow:0 1px 0 rgba(255,255,255,0.5);
+	text-shadow:0 1px 0 rgba(255,255,255,0.5);
+}
+.outfit-link-box {
+	font-size:12px;
+	padding-top:15px;
+	display:flex;
+	width:100%;
+	white-space: nowrap;
+}
+.outfit-link-box label {
+	text-decoration:none;
+	color:black;
+	font-size: 12px;
+	margin-right: 5px;
+}
+.outfit-link-box input {
+	width:100%;
+	background: #333;
+	border: none;
+	border: 1px solid black;
+	color:#999;
+	padding: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	font-size: 9px;
+}
+.outfit-link-box a:hover, .outfit-link-box a:active {
+	color:blue;
+	text-decoration:underline;
+}
+
+.picker-pip {
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+	
+	display:inline-block;
+	height:10px;
+	width:10px;
+	
+	-moz-box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.5);
+	-webkit-box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.5);
+	box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.5);
+	margin-right:5px;
+	margin-left:-3px;
+}
+@media (max-width: 883px) {
+	.ad { order: -1 }
+	.picker-block {
+		flex-basis: 100%;
+		order: 1;
+	}
+	.picker-block .label {
+		flex-basis: 20%;
+	}
+	.master-panel {
+		flex-wrap: wrap;
+	}
+}
+.fineprint {
+	margin:0;
+	margin-top: 30px;
+	font-size: 80%;
+	font-weight: 100;
+}
+.fineprint li {
+	display:block;
+	text-align:center;
+}
+</style>
+<script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>		
+<script type="text/javascript" charset="utf-8" src="{{ "/assets/stylunk/shims.js" | relative_url }}"></script>
+<script type="text/javascript" charset="utf-8" src="{{ "/assets/stylunk/JSLRU.js" | relative_url }}"></script>
+<script type="text/javascript" charset="utf-8" src="{{ "/assets/stylunk/colorTable.js" | relative_url }}"></script>
+<script type="text/javascript" charset="utf-8" src="{{ "/assets/stylunk/stylunkData.js" | relative_url }}"></script>
+<script type="text/javascript" charset="utf-8" src="{{ "/assets/stylunk/CLImages.js" | relative_url }}"></script>
+<script type="text/javascript" charset="utf-8" src="{{ "/assets/stylunk/core.js" | relative_url }}"></script>
+
+<div class="stylunk-header">
+	<div>
+		<h1 class="page-title stylunk-page-title"><span>Stylunk</span><img src="{{ "/assets/stylunk/icon.png" | relative_url }}" /></h1>
+		{{ content }}
+	</div>
+	
+	<div id="Donate">
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+		<input type="hidden" name="cmd" value="_s-xclick">
+		<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+		">
+		<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+		<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+		</form>
+	</div>
+</div>
+
+<div class="master-panel master-panel-preview">
+	<div class="preview-row">
+		<div id="Preview">
+			<div class="preview-palette">
+				<div class="circular-slider">
+					<div class="knob"></div>
+				</div>
+				<select class="pose-picker">
+					<optgroup label="Static">
+						<option value="[{type:'stand'}]">Stand</option>
+						<option value="[{type:'walk1'}]">Walk 1</option>
+						<option value="[{type:'walk2'}]">Walk 2</option>
+						<option value="[{type:'attack'}]">Attack</option>
+						<option value="[{type:'pose', pose:'dead'}]">Dead</option>
+						<option value="[{type:'pose', pose:'celebrate'}]">Celebrate</option>
+						<option value="[{type:'pose', pose:'sit'}]">Sit</option>
+						<option value="[{type:'pose', pose:'seated'}]">Seated</option>
+						<option value="[{type:'pose', pose:'leanleft'}]">Leanleft</option>
+						<option value="[{type:'pose', pose:'leanright'}]">Leanright</option>
+						<option value="[{type:'pose', pose:'akimbo'}]">Akimbo</option>
+						<option value="[{type:'pose', pose:'bless'}]">Bless</option>
+						<option value="[{type:'pose', pose:'kneel'}]">Kneel</option>
+						<option value="[{type:'pose', pose:'lie'}]">Lie</option>
+						<option value="[{type:'pose', pose:'angry'}]">Angry</option>
+						<option value="[{type:'pose', pose:'salute'}]">Salute</option>
+						<option value="[{type:'pose', pose:'bow'}]">Bow</option>
+						<option value="[{type:'pose', pose:'thoughtful'}]">Thoughtful</option>
+						<option value="[{type:'pose', pose:'cry'}]">Cry</option>
+						<option value="[{type:'pose', pose:'surprised'}]">Surprised</option>
+					</optgroup>
+					<optgroup label="Animated">
+						<option value="[{type:'animation', animation:'walk'}]">Walk</option>
+						<option value="[{type:'animation', animation:'run'}]">Run</option>
+						<option value="[{type:'animation', animation:'fight'}]">Fight</option>
+						<option value="[{type:'animation', animation:'dance'}]">Dance</option>
+					</optgroup>
+				</select>
+				<div class="zoom-slider">
+					<div class="knob"></div>
+					<span class="label">&#128270;</span>
+				</div>
+			</div>
+			<canvas width="425" height="212"></canvas>
+			<div class="well">
+			</div>
+		</div>
+		<div class="ad">
+			{% if jekyll.environment == "production" %}
+			<script type="text/javascript"><!--
+			google_ad_client = "ca-pub-3560203263716577";
+			/* Stylunk preview block */
+			google_ad_slot = "8606305109";
+			google_ad_width = 300;
+			google_ad_height = 250;
+			//-->
+			</script>
+			<script type="text/javascript"
+			src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+			</script>
+			{% endif %}
+		</div>
+	</div>
+    <div class="outfit-link-box">
+        <label for="permalink">&#128279; Share:</label>
+        <input type="text" class="permalink" name="permalink" value="" />
+    </div>
+</div>
+<div class="master-panel" id="Controls">
+    <div class="picker-block">
+        <h3>Base Appearance</h3>
+		<div class="row">
+			<span class="label">Race:</span>
+			<a href="#" class="dropdown button link" id="Race"></a>
+		</div>
+		<div class="row">
+			<span class="label">Variant:</span>
+			<a href="#" class="dropdown button link" id="Variant"></a>
+		</div>
+		<div class="row">
+			<span class="label">Underwear:</span>
+			<a href="#" class="dropdown button link" id="Underwear"></a>
+		</div>
+		<div class="row">
+			<span class="label">Weapon Dye:</span>
+			<a href="#" class="dropdown button link" id="Weapon"></a>
+		</div>
+		<div class="row">
+			<span class="label">Skin:</span>
+			<a href="#" class="dropdown button link" id="Skin"></a>
+		</div>
+		<div class="row">
+			<span class="label">Hair:</span>
+			<a href="#" class="dropdown button link" id="Hair"></a>
+		</div>
+		<div class="row">
+			<span class="label">Skin Dye:</span>
+			<a href="#" class="dropdown button link" id="Skindye"></a>
+		</div>
+		<div class="row">
+			<span class="label">Shoes:</span>
+			<a href="#" class="dropdown button link" id="Shoes"></a>
+		</div>
+		<div class="row">
+			<span class="label">Belt:</span>
+			<a href="#" class="dropdown button link" id="Belt"></a>
+		</div>
+        <div class= "row" id="HelmBlock" style="display:none;">
+            <span class="label">Helm Dye:</span>
+            <a href="#" class="dropdown button link" id="Helm"></a>
+        </div>
+    </div>
+
+    <div class="dye-block">
+        <h3>Shirt/Cloak</h3>
+        <a href="#" class="dropdown button swatch" id="Shirt"></a>
+        
+        <div class="cloak-box disabled">
+            <input type="checkbox" name="cloak" disabled />
+            <label for="cloak">Convert to cloak</label>
+        </div>
+        <div class="button-panel">
+            <a href="#" class="preview-button button lila bleach shirt">
+                <canvas width="70" height="70"></canvas>
+                <span class="name"><span>Lila Bleach</span></span>
+            </a>
+
+            <a href="#" class="preview-button button lila dye shirt">
+                <canvas width="70" height="70"></canvas>
+                <span class="name"><span>Lila Dye</span></span>
+            </a>
+
+            <a href="#" class="preview-button button bramble bleach shirt">
+                <canvas width="70" height="70"></canvas>
+                <span class="name"><span>Bramble Bleach</span></span>
+            </a>
+
+            <a href="#" class="preview-button button bramble dye shirt">
+                <canvas width="70" height="70"></canvas>
+                <span class="name"><span>Bramble Dye</span></span>
+            </a>
+
+            <a href="#" class="preview-button button orga bleach shirt">
+                <canvas width="70" height="70"></canvas>
+                <span class="name"><span>Orga Bleach</span></span>
+            </a>
+
+            <a href="#" class="preview-button button orga dye shirt">
+                <canvas width="70" height="70"></canvas>
+                <span class="name"><span>Orga Dye</span></span>
+            </a>
+            <div class="recipe-block shirt-recipe">
+                <input type="button" value="Reset" disabled />
+                <span class="recipe"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="dye-block">
+        <h3>Pants</h3>
+        <a href="#" class="dropdown button swatch" id="Pants"></a>
+        <div class="cloak-box"></div>
+        <div class="button-panel">
+            <a href="#" class="preview-button button lila bleach pants">
+                <canvas width="70" height="70"></canvas>
+                <span class="name"><span>Lila Bleach</span></span>
+            </a>
+
+            <a href="#" class="preview-button button lila dye pants">
+                <canvas width="70" height="70"></canvas>
+                <span class="name"><span>Lila Dye</span></span>
+            </a>
+
+            <a href="#" class="preview-button button bramble bleach pants">
+                <canvas width="70" height="70"></canvas>
+                <span class="name"><span>Bramble Bleach</span></span>
+            </a>
+
+            <a href="#" class="preview-button button bramble dye pants">
+                <canvas width="70" height="70"></canvas>
+                <span class="name"><span>Bramble Dye</span></span>
+            </a>
+
+            <a href="#" class="preview-button button orga bleach pants">
+                <canvas width="70" height="70"></canvas>
+                <span class="name"><span>Orga Bleach</span></span>
+            </a>
+
+            <a href="#" class="preview-button button orga dye pants">
+                <canvas width="70" height="70"></canvas>
+                <span class="name"><span>Orga Dye</span></span>
+            </a>
+            <div class="recipe-block pants-recipe">
+                <input type="button" value="Reset" disabled />
+                <span class="recipe"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ul class="fineprint">
+	<li>Clan Lord graphics are used with permission from <a href="http://deltatao.com">Delta Tao</a>.</li>
+	<li>Cartoon Stylunk head drawn by Hoggle.</li>
+	<li>Everything else &copy; Sean Kerwin</li>
+</ul>
