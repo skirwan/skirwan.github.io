@@ -28,6 +28,7 @@ exclude:
   - gemfiles/
   - Gemfile
   - Gemfile.lock
+  - newpost.rb
   - node_modules/
   - README.md
   - vendor/bundle/

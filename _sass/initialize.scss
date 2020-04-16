@@ -68,7 +68,7 @@ h1.site-title {
 
   a {
     text-decoration:none;
-    color:$background-color;  
+    color:$background-color;
     &:hover {
       text-decoration: none;
     }
@@ -137,9 +137,9 @@ body {
     }
   }
 
-  ul { 
-    margin: 0; 
-    padding: 0; 
+  ul {
+    margin: 0;
+    padding: 0;
     display: flex;
 
     &.iconlinks {
@@ -148,7 +148,7 @@ body {
       a {
         color: $background-color;
         background:$accent-color;
-  
+
         width: 22px;
         height: 22px;
         border-radius:22px;
@@ -312,6 +312,13 @@ p a:only-child img:only-child {
   max-width: 100%;
 }
 
+.footnotes {
+    font-size: $small-font-size;
+    border-top: 1px solid $brand-color-light;
+    margin-top: 10px;
+    padding-top: 20px;
+}
+
 @media (max-width: 575px) {
   .archive-year {
     width: 60px;
@@ -423,7 +430,7 @@ p a:only-child img:only-child {
     color: $accent-color;
     font-style: italic;
     font-weight: 100;
-    
+
     p {
       text-align:justify;
       hyphens: auto;
