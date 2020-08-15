@@ -366,7 +366,7 @@ canvas {
 	-moz-box-shadow:0 -1px 0 0 rgba(0,0,0,0.5), 0 0 3px 0 white, inset 0 10px 10px -10px rgba(255,255,255,0.5), inset 0 -10px 10px -10px rgba(0,0,0,0.5);
 	box-shadow:0 -1px 0 0 rgba(0,0,0,0.5), 0 0 3px 0 white, inset 0 10px 10px -10px rgba(255,255,255,0.5), inset 0 -10px 10px -10px rgba(0,0,0,0.5);
 	background:#999;
-	
+
 	position:relative;
 	z-index:1001;
 }
@@ -452,11 +452,11 @@ canvas {
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
 	border-radius:10px;
-	
+
 	display:inline-block;
 	height:10px;
 	width:10px;
-	
+
 	-moz-box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.5);
 	-webkit-box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.5);
 	box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.5);
@@ -488,7 +488,7 @@ canvas {
 }
 </style>
 <script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>		
+<script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="{{ "/assets/stylunk/shims.js" | relative_url }}"></script>
 <script type="text/javascript" charset="utf-8" src="{{ "/assets/stylunk/JSLRU.js" | relative_url }}"></script>
 <script type="text/javascript" charset="utf-8" src="{{ "/assets/stylunk/colorTable.js" | relative_url }}"></script>
@@ -501,7 +501,7 @@ canvas {
 		<h1 class="page-title stylunk-page-title"><span>Stylunk</span><img src="{{ "/assets/stylunk/icon.png" | relative_url }}" /></h1>
 		{{ content }}
 	</div>
-	
+
 	<div id="Donate">
 		<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 		<input type="hidden" name="cmd" value="_s-xclick">
@@ -628,7 +628,7 @@ canvas {
     <div class="dye-block">
         <h3>Shirt/Cloak</h3>
         <a href="#" class="dropdown button swatch" id="Shirt"></a>
-        
+
         <div class="cloak-box disabled">
             <input type="checkbox" name="cloak" disabled />
             <label for="cloak">Convert to cloak</label>
@@ -715,5 +715,13 @@ canvas {
 <ul class="fineprint">
 	<li>Clan Lord graphics are used with permission from <a href="http://deltatao.com">Delta Tao</a>.</li>
 	<li>Cartoon Stylunk head drawn by Hoggle.</li>
-	<li>Everything else &copy; Sean Kerwin</li>
+    <li>Everything else &copy; Sean Kerwin</li>
+    <hr />
+    <li>
+        Found a problem?
+        <a href="https://github.com/skirwan/skirwan.github.io/issues">Open an issue</a>
+        or create a pull request.
+        If you want to add a new item, color constants are
+        <a href="https://github.com/skirwan/skirwan.github.io/blob/master/assets/stylunk/stylunkData.js">here</a>
+    </li>
 </ul>
