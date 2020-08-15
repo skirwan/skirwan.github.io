@@ -319,6 +319,13 @@ p a:only-child img:only-child {
     padding-top: 20px;
 }
 
+h3 {
+    border-bottom: 1px solid $brand-color-light;
+}
+
+a {
+    text-decoration: underline;
+}
 @media (max-width: 575px) {
   .archive-year {
     width: 60px;
