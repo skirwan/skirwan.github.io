@@ -1167,6 +1167,24 @@ var shirt = [
 	}
 },
 {
+	name: 'Mountain Goat',
+	category: 'General',
+	colors: {
+		182: [ 255, 204, 204 ],
+        195: [204, 153, 102],
+        202: [ 102, 102, 102 ]
+	}
+},
+{
+	name: 'Woodland Green',
+	category: 'General',
+	colors: {
+		182: [ 102, 204, 102 ],
+        195: [ 153, 102, 51],
+        202: [ 51, 102, 0 ]
+	}
+},
+{
 	name: 'Bright Sunset',
 	category: 'Carnival',
 	colors: {
@@ -1182,6 +1200,15 @@ var shirt = [
 		182: [ 102, 153, 204 ],
         195: [51, 51, 51],
         202: [ 0, 0, 51 ]
+	}
+},
+{
+	name: 'Bubblegum',
+	category: 'Carnival',
+	colors: {
+		182: [ 255, 204, 204 ],
+        195: [ 255, 102, 255],
+        202: [ 102, 0, 102 ]
 	}
 }
 ]
