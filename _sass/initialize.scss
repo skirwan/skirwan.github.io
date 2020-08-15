@@ -79,25 +79,9 @@ h1.site-title {
     span {
       width: 25%;
       height:70px;
-      line-height: 1;
+      line-height: 0.9;
       text-align:center;
-      transform: rotate(90deg);
-
-      &:nth-child(1) { order: 4; }
-      &:nth-child(2) { order: 8; }
-      &:nth-child(3) { order: 12; }
-
-      &:nth-child(4) { order: 3; }
-      &:nth-child(5) { order: 7; }
-      &:nth-child(6) { order: 11; }
-
-      &:nth-child(7) { order: 2; }
-      &:nth-child(8) { order: 6; }
-      &:nth-child(9) { order: 10; }
-
-      &:nth-child(10) { order: 1; }
-      &:nth-child(11) { order: 5; }
-      &:nth-child(12) { order: 9; }
+      transform: none;
     }
   }
 }
@@ -358,8 +342,23 @@ a {
         span {
           height:80px;
           width: 33.3333%;
-          transform: none;
-          order: unset !important;
+          transform: rotate(-90deg);
+          line-height: 1;
+
+          &:nth-child(1) { order: 10; }
+          &:nth-child(2) { order: 7; }
+          &:nth-child(3) { order: 4; }
+          &:nth-child(4) { order: 1; }
+
+          &:nth-child(5) { order: 11; }
+          &:nth-child(6) { order: 8; }
+          &:nth-child(7) { order: 5; }
+          &:nth-child(8) { order: 2; }
+
+          &:nth-child(9) { order: 12; }
+          &:nth-child(10) { order: 9; }
+          &:nth-child(11) { order: 6; }
+          &:nth-child(12) { order: 3; }
         }
       }
     }

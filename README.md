@@ -1,4 +1,4 @@
-# `sean.kerw.in`
+# `sean.ker.win`
 
 Source for Sean's website.  Copyright me.  If anything here is useful to you for
 solving a particular problem, you're free to use it.  This does not extend to

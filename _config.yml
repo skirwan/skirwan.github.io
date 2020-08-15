@@ -2,11 +2,11 @@
 # > `bundle exec jekyll serve`
 
 
-title: Sean.Kerw.in
+title: Sean.Ker.win
 description: >-
   Writes code.  Former SpaceX, former Bird.  Loves his wife, his cats, and paperclips.
 baseurl: ""
-url: "https://sean.kerw.in/"
+url: "https://sean.ker.win/"
 permalink: /archives/:year/:month/:title:output_ext
 
 # Build settings
