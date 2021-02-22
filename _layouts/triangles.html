@@ -1,0 +1,632 @@
+---
+layout: default
+---
+<style>
+h2 {
+	font-weight: 100;
+}
+h3 {
+	border:none;
+	margin-bottom: -10px;
+	padding-bottom: 0;
+}
+
+.box {
+	width: 100%;
+	border: 1px solid #CCC;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.box textarea {
+	width: 100%;
+	max-width: 100%;
+	font-family: monospace;
+	font-size: 15px;
+	margin: 0;
+	box-sizing: border-box;
+	height: 22px;
+	border: none;
+	border-top: 1px solid #CCC;
+	margin-bottom: -4px;
+}
+
+.box .textarea {
+	border-top: 1px solid #CCC;
+	font-family: monospace;
+	font-size: 15px;
+}
+
+.symbols { padding-left: 4px; background: white; }
+.symbols img { margin-left:-3px; margin-right:-3px; margin-top:-4px; }
+.symbols span { display:inline-block; width: 9px; }
+.symbols a { display:inline-block; margin-left:-6px; color: #333; text-decoration:none;}
+
+.lexemes {
+	background: white;
+	border-top: 1px solid #CCC;
+	padding: 2px;
+}
+.lexemes span {
+	display:inline-block;
+	margin-left: 5px;
+}
+.guess {
+	background: #CCC;
+	padding: 2px;
+	font-family: cursive;
+	text-shadow: 0 -1px #EEE;
+	font-size: 22px;
+	text-align: center;
+	padding-left:10px;
+	padding-right:10px;
+}
+.guess img { margin-left:-3px; margin-right:-3px; margin-bottom: -2px; }
+.lexemes span:first-child { margin-left: 0; }
+#grammar-section {
+	margin-bottom: 30px;
+}
+.grammar-list { 
+	background: #eee5e8;
+	margin-top: 10px;
+	border: 1px solid #ccc;
+}
+.grammar-list h3 {
+	background: #510021;
+	margin-bottom: 5px;
+	padding: 5px;
+	color: white;
+}
+.grammar-list h3 a {
+	float:right;
+	color: white;
+	font-size:10px;
+	line-height: 3;
+}
+.grammar-list .row {
+	text-align: center;
+	border-bottom: 1px solid white;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.grammar-list.collapse .row { display: none; }
+.grammar-list.collapse .add-block { display: none; }
+
+.grammar-list .row * { vertical-align: top; }
+.grammar-list .row input { 
+	font-family: monospace;
+	font-size: 15px;
+}
+.grammar-list .source { display: inline-block; }
+.grammar-list .source .symbols { 
+	margin-top: 5px;
+	margin-bottom: -10px;
+	background: transparent;
+	text-align: left;;
+}
+.add-block {
+	text-align: center;
+}
+</style>
+
+<h1 class="page-title">Triangles</h1>
+
+{{ content }}
+
+<h2>Grammar</h2>
+<div id="grammar-section"></div>
+
+<h2>Known Messages</h2>
+<div id="known"></div>
+
+<h2>Transliteration Checker</h2>
+<div class="box" id="checker"></div>
+
+<script>
+(function(){
+	const aCode = 'a'.charCodeAt(0);
+	const zCode = 'z'.charCodeAt(0);
+	const prefixes = [
+		{ t: 'xi', m: 'un' },
+		{ t: 'omi', m: 'anti' },
+		{ t: 'caus+', m: 'this' },
+		{ t: 'us+', m: 'next' },
+		{ t: 'us+', m: 'some' },
+		{ t: 'strp', m: 'all' },
+		{ t: 'b+', m: 'unknown' },
+		{ t: 'mapr', m: 'broken' },
+		{ t: 'lik+', m: 'some' },
+		{ t: 'tlaic', m: 'aggressive' },
+	];
+	const suffixes = [
+		{ t: 'kyd', m: 'subject' },
+		{ t: 'myd', m: 'to/at' },
+		{ t: 'vyd', m: 'from' },
+		{ t: 'zyn', m: 'ing' },
+		{ t: 'ky', m: 'past' },
+		{ t: 'my', m: 'present' },
+		{ t: 'vy', m: 'future' },
+		{ t: 'if', m: 'infinitive' },
+		{ t: 'tad', m: 'when' },
+		{ t: 'tdd', m: 'who' },
+		{ t: 'tdb', m: 'how' },
+		{ t: 'vai', m: 'where' },
+		{ t: 'lama', m: 'master' },
+		{ t: 'yet+', m: 'beginning' },
+		{ t: 'yet', m: 'middle' },
+		{ t: 'ye', m: 'end' },
+	];
+	const vocabulary = [
+		{ t: 'pas', m: 'not' },
+		{ t: 'erd', m: 'exist' },
+		{ t: 'oao', m: 'light' },
+		{ t: 'tzrt', m: 'orga' },
+		{ t: 'tzr', m: 'org' },
+		{ t: 'tli', m: 'materialplane' },
+		{ t: 'm+tz', m: 'sun/time' },
+		{ t: 'aiia', m: 'moon' },
+		{ t: 'tian', m: 'mirror/reflect' },
+		{ t: 'qui', m: 'obey' },
+		{ t: 'o', m: 'indefinite/transient' },
+		{ t: 'q', m: 'specific/eternal' },
+	]
+	
+	const translateListeners = [];
+
+	let needsTranslate = false;
+	function retranslate() {
+		if (needsTranslate) return;
+		needsTranslate = true;
+
+		window.setTimeout(() => {
+			if(needsTranslate) {
+				needsTranslate = false;
+				
+				translateListeners.forEach((callback) => callback());
+			}
+		}, 2);
+	}
+
+	function buildGrammarEditorRow(listContainer, list, item) {
+		const row = document.createElement('div');
+		row.className = 'row';
+
+		const source = document.createElement('div');
+		source.className = 'source';
+
+		const from = document.createElement('input');
+		from.type = 'text';
+		from.value = item.t;
+		from.spellcheck = false;
+		source.appendChild(from);
+
+		const symbols = document.createElement('div');
+		symbols.className = 'symbols';
+		source.appendChild(symbols);
+		
+		from.addEventListener('keyup', (evt) => {
+			setTimeout(() => {
+				item.t = from.value;
+				retranslate();
+			}, 0);
+		});
+		watch(from, symbols, null);
+		transliterate(item.t, symbols);
+		
+		row.appendChild(source);
+
+		row.appendChild(document.createTextNode('→'))
+
+		const to = document.createElement('input');
+		to.type = 'text';
+		to.value = item.m;
+		to.addEventListener('keyup', (evt) => {
+			setTimeout(() => {
+				item.m = to.value;
+				retranslate();
+			}, 0);
+		});
+		row.appendChild(to);
+
+		const remove = document.createElement('a');
+		remove.href = '#';
+		remove.innerText = '[remove]';
+		remove.addEventListener('click', (evt) => {
+			evt.preventDefault();
+			const idx = list.indexOf(item);
+			list.splice(idx, 1);
+			listContainer.removeChild(row);
+			retranslate();
+		});
+		row.appendChild(remove);
+
+		listContainer.appendChild(row);
+
+		item.row = row;
+	}
+
+	function addRow(listContainer, list) {
+		const item = { t: 'from', m: 'to' };
+		list.push(item);
+		buildGrammarEditorRow(listContainer, list, item);
+
+		retranslate();
+	}
+
+	function buildGrammarEditor(where, label, list) {
+		const listContainer = document.createElement('div');
+		listContainer.className = 'grammar-list collapse';
+		where.appendChild(listContainer);
+
+		const header = document.createElement('h3');
+		header.innerHTML = label;
+		listContainer.appendChild(header);
+
+		const expand = document.createElement('a');
+		expand.href = '#';
+		expand.innerText = '[expand]';
+		expand.addEventListener('click', (evt) => {
+			evt.preventDefault();
+			if (expand.innerText == '[expand]') {
+				listContainer.classList.remove('collapse');
+				expand.innerText = '[collapse]';
+			} else {
+				listContainer.classList.add('collapse');
+				expand.innerText = '[expand]';
+			}
+			
+		});
+		header.appendChild(expand);
+		
+		list.forEach((item) => {
+			buildGrammarEditorRow(listContainer, list, item);
+		});
+
+		const addBlock = document.createElement('div');
+		addBlock.className = 'add-block';
+		listContainer.appendChild(addBlock);
+
+		const add = document.createElement('a');
+		add.href = '#';
+		add.className = 'add';
+		add.innerText = '[add]';
+		add.addEventListener('click', (evt) => {
+			evt.preventDefault();
+			addRow(listContainer, list);
+		});
+		addBlock.appendChild(add);
+
+		const clear = document.createElement('a');
+		clear.href = '#';
+		clear.className = 'add';
+		clear.innerText = '[remove all]';
+		clear.addEventListener('click', (evt) => {
+			evt.preventDefault();
+			list.forEach((item) => {
+				if (item.row) {
+					listContainer.removeChild(item.row);
+				}
+			})
+			list.splice(0);
+			retranslate();
+		});
+		addBlock.appendChild(clear);
+	}
+
+	const grammarSection = document.getElementById('grammar-section');
+	buildGrammarEditor(grammarSection, 'Prefixes', prefixes);
+	buildGrammarEditor(grammarSection, 'Suffixes', suffixes);
+	buildGrammarEditor(grammarSection, 'Words', vocabulary);
+
+	function transliterate(msg, triangleNode, retain) {
+		if (!retain) {
+			Array.from(triangleNode.childNodes).forEach((n)=>triangleNode.removeChild(n));
+		}
+		Array.from(msg).forEach((c, idx) => {
+			let code = c.toLowerCase().charCodeAt(0);
+			let el = null;
+			if ( code >= aCode && code <= zCode ) {
+				el = document.createElement('img');
+				el.src = "{{ "/assets/triangles/" | relative_url }}" + ( 3818 + (code - aCode) * 2 + idx % 2 ) + ".png" 
+			} else if ( c == "+" || c == "#" ) {
+				el = document.createElement('img');
+				el.src = "{{ "/assets/triangles/" | relative_url }}" + ( 3870 + idx % 2 ) + ".png" 
+			} else if ( c == "," ) {
+				el = document.createElement('img');
+				el.src = "{{ "/assets/triangles/" | relative_url }}" + ( 3874 + idx % 2 ) + ".png" 
+			}  else if ( c == "." ) {
+				el = document.createElement('img');
+				el.src = "{{ "/assets/triangles/" | relative_url }}" + ( 3876 + idx % 2 ) + ".png" 
+			} else /* if ( c == " ") */ {
+				el = document.createElement('span');
+			}
+			triangleNode.appendChild(el)
+		});
+	};
+	
+	function translate(msg, lexemeNode) {
+		Array.from(lexemeNode.childNodes).forEach((n)=>lexemeNode.removeChild(n));
+		
+		let words = msg.toLowerCase().split(/[^a-z\+\#]/).filter((s)=>!!s)
+		words.forEach((w) => {
+			w = w.replaceAll('#', '+');
+
+			let start = '';
+			
+			let dirty = true;
+			while (dirty) {
+				dirty = false;
+				prefixes.forEach((p) => {
+					if (w.substring(0, p.t.length) == p.t) {
+						dirty = true;
+						if (start) { start += '-'; }
+						start += p.m
+						w = w.substring(p.t.length);
+					}
+				});
+			}
+			
+			let end = '';
+			
+			dirty = true;
+			while (dirty) {
+				dirty = false;
+				suffixes.forEach((p) => {
+					if (w.substring(w.length - p.t.length) == p.t) {
+						dirty = true;
+						if (end) { end = '-' + end; }
+						end = p.m + end;
+						w = w.substring(0, w.length - p.t.length);
+					}
+				});
+			}
+			
+			let found = false
+			vocabulary.forEach((p) => {
+				if (w == p.t) {
+					w = p.m
+					found = true
+				}
+			});
+			
+			if (!found && !!w) {
+				w = '[' + w + ']';
+			}
+			
+			let built = '';
+			if (start) { built = start; }
+			if (w) { 
+				if (built) { built += '-'; }
+				built += w;
+			}
+			if (end) {
+				if (built) { built += '-'; }
+				built += end;
+			}
+			
+			lexemeNode.appendChild(document.createTextNode(built + ' '));
+		});
+	}
+	
+	function watch(sourceNode, symbolNode, lexemeNode) {
+		let dirty = false;
+		function translateIfNeeded() {
+			if (!dirty) return;
+			dirty = false;
+			transliterate(sourceNode.value, symbolNode);
+			if(lexemeNode) {
+				translate(sourceNode.value, lexemeNode);
+			}
+		}
+		
+		sourceNode.addEventListener('keyup', (evt) => {
+			dirty = true;
+			window.setTimeout(() => translateIfNeeded(), 1);
+		});
+	}
+	
+	function fillMessageBox(containerNode, message, readonly) {
+		let inbox = null;
+		if (readonly) {
+			inbox = document.createElement('div');
+			inbox.innerText = message;
+			inbox.className = 'textarea';
+		} else {
+			inbox = document.createElement('textarea');
+			inbox.value = message;
+			inbox.spellcheck = false;
+		}
+		
+		const symbolBox = document.createElement('div');
+		symbolBox.className = 'symbols';
+		const lexemeBox = document.createElement('div');
+		lexemeBox.className = 'lexemes';
+		containerNode.appendChild(symbolBox);
+		containerNode.appendChild(inbox);
+		containerNode.appendChild(lexemeBox);
+		
+		transliterate(message, symbolBox);
+		
+		if (!readonly) {
+			watch(inbox, symbolBox, lexemeBox);
+		}
+
+		translate(message, lexemeBox);
+
+		translateListeners.push(() => {
+			let from = readonly ? message : inbox.value;
+			translate(from, lexemeBox);
+		});
+	}
+	
+	fillMessageBox(document.getElementById('checker'), 'type here', false);
+	
+	function interpolate(containerNode, message) {
+		const text = message.split(/<[^>]+>/);
+		const symbols = message.match(/<[^>]+>/g) ?? [];
+		
+		text.forEach((t, idx) => {
+			if (t) {
+				containerNode.appendChild(document.createTextNode(t));
+			}
+			
+			if (idx < symbols.length) {
+				const span = document.createElement('code');
+				transliterate(symbols[idx], span);
+				//span.innerHTML = '(' + span.innerHTML + ')'
+				containerNode.appendChild(span);
+			}
+		});
+	}
+	function appendNewMessageBox(containerNode, message, guess) {
+		const div = document.createElement('div');
+		div.className = 'box';
+		containerNode.appendChild(div);
+		fillMessageBox(div, message, true);
+		
+		if (guess) {
+			const g = document.createElement('div');
+			g.className = 'guess';
+			div.appendChild(g);
+			
+			interpolate(g, guess);
+		}
+	}
+	
+	Array.from(document.getElementsByTagName('code')).forEach((code) => {
+		const message = code.innerText;
+		code.className += ' symbols';
+		code.innerHTML = '';
+		transliterate(message, code)
+	});
+	
+	const known = [
+		{
+			name: "Cloud Alchemy Lab", 
+			messages: [
+				{ m: 'erdky ktwvy aiiaif ktwmy ctgn#if pas miggqtad.', g: '' },
+			],
+		},{
+			name: 'Ancient Bear Cave West',
+			messages: [
+				{ m: 'erdky xioaomyd pas xilik+qtad.', g: 'the darkness is eternal.' },
+				{ m: 'erdky quimy strpqtad caus+vai xioaokyd pas strpotdd.', g: 'the darkness had never obeyed anyone' },
+				{ m: 'erdky oaomy xioaozyn us+qtad.', g: 'and then the darkening was lighted' },
+				{ m: 'erdky tzrtmyd caus+qtad.', g: 'at this time the orga were created' },
+				{ m: 'erdky tzrvyd tzrtmyd b+otdd, caus+qtad.', g: 'at this time somehow the orga were created from the org' },
+			],
+		},{
+			name: 'Ancient Bear Cave East (Reversed*)',
+			messages: [
+				{ m: 'tzrtkyd erdmy tlaicqtdd.', g: 'orga are aggressive' },
+				{ m: 'tzrtkyd quimy xistrpqtdd.', g: 'orga obey nobody' },
+				{ m: 'tzrtkyd erdmy xilik#qtdd.', g: 'orga are not individuals (?)' },
+				{ m: 'erdky tzrtmyd us#qtad caus#vai quiky strpotad.', g: 'next orga were created here that always obeyed' },
+				{ m: 'erdky oaomy xioaozyn us#qtad caus#vai tzrtkyd caus#qtad.', g: 'at this time orga lighted the soon-to-come darkening here' },
+			],
+		},{
+			name: 'Northern Ruins Outer - Original',
+			messages: [
+				{ m: 'wt myd zyn  xiwtdb.', g: '' },
+				{ m: 'ky myd pas xiwtdb.', g: '' },
+			],
+		},{
+			name: 'Northern Ruins Outer - Charged (Partially?)',
+			messages: [
+				{ m: 'ky tzrmyd xilik+qtdb.', g: '' },
+				{ m: 'ky ximihmy xilik+qtdb.', g: '' },
+			],
+		},{
+			name: 'Northern Ruins North',
+			messages: [
+				{ m: 'erdky tzrmyd caus+qtad.', g: 'at this time org were created' },
+				{ m: 'quiky kzizyn b+qtdb.', g: 'obeyed <kzi>ing somehow' },
+				{ m: 'quiky xikzizyn b+qtdb.', g: 'obeyed un<kzi>ing somehow' },
+			],
+		},{
+			name: 'Northern Ruins West',
+			messages: [
+				{ m: 'tzrkyd quimy xikzizyn caus+otad.', g: 'org obey un<kzi>ing for now' },
+				{ m: 'erdky tzrmyd caus+qtad caus+vai quiky xikziotdb.', g: 'now and here org were created that obeyed forever un<kzi>ly' },
+			],
+		},{
+			name: 'Northern Ruins East',
+			messages: [
+				{ m: 'erdky tzrmyd dw+llqtad clrs+jr caus+vai quiky erdif xikziotdb.', g: 'org were created at the time of <dw+llq> <clrs+jr> here that obeyed to exist forever un<kzi>ly' },
+				{ m: 'erdky tzrmyd dw+llqtad clrs+jr.', g: 'org were created at the time of <dw+llq> <clrs+jr> ' },
+				{ m: 'quiky erdif xikziqtdb caus+vai erdky ximihqtad.', g: 'obeyed to exist for a time un<kzi>ly at this place existed at the time of un<mih>' },
+			],
+		},{
+			name: 'Windweft Ice Cave',
+			messages: [
+				{ m: 'oaoky pas, xioaozyn b#qtdb vaic oaoky pas, oaozyn b#qtdb.', g: '' },
+				{ m: 'm#tzlamakyd erdif tianmy caus#qtad.', g: '' },
+				{ m: 'tianky pas omitlimy trrm jrinqtdb.', g: '' },
+				{ m: 'tianky pas tlivy trrm omitlimy trrm jrinqtdb.', g: '' },
+				{ m: 'erdky tianmy pas us#qtad.', g: '' },
+				{ m: 'omitliky xioaozyn b#qtdb.', g: '' },
+				{ m: 'omitliky oaozyn b#qtdb.', g: '' },
+				{ m: 'm#tzlamakyd erdif, amazdzyn b#qtdd.', g: '' },
+				{ m: 'oaoky pas, oaozyn u#phjr b#qtdb.', g: '' },
+				{ m: 'oaoky pas, oaomy m#tzif grrdzyn sam#jr b#qtdb.', g: '' },
+			],
+		},{
+			name: 'Foghaven Crossroads',
+			messages: [
+				{ m: 'xioaokyd pas oaomy xioaozyn lik#qtdd.', g: '' },
+				{ m: 'xioaokyd pas oaomy xioaozyn trrm crmdqtdd.', g: '' },
+				{ m: 'xioaokyd pas tianmy pas us#qtdd.', g: '' },
+				{ m: 'xioaokyd pas tlimy trrm crmdqtdd.', g: '' },
+				{ m: 'xioaokyd erdmy xilik#qtdd.', g: '' },
+				{ m: 'm#tzlamakyd erdif, mahtzyn b#qtdd.', g: '' },
+			],
+		},{
+			name: 'GMV Ruins',
+			messages: [
+				{ m: 'xioaokyd pas xistrpqtdd.', g: '' },
+				{ m: 'erdky, mahtzyn b#qtad.', g: '' },
+				{ m: 'erdky tianmyd us#qtad.', g: '' },
+				{ m: 'erdky m#tzyet#my pas trrm grqtdb.', g: '' },
+				{ m: 'erdky tianmyd us#qtad caus#vai m#tzyet#ky pas trrm grwtdb.', g: '' },
+				{ m: 'm#tzyet#ky pas m#tzyetmy pas maprqtdb.', g: '' },
+				{ m: 'erdky pas m#tzyetmy pas maprqtad.', g: '' },
+				{ m: 'tiankyd pas xiplacdmyd trrm jrinqtdd.', g: '' },
+				{ m: 'tiankyd pas maprqtdd.', g: '' },
+			],
+		},{
+			name: 'Foghaven Waterfall North',
+			messages: [
+				{ m: 'matalin+ky tianmy pas us+qtdb.', g: '' },
+				{ m: 'matalin+ky oaomy xioaozyn lik+qtdb.', g: '' },
+				{ m: 'matalin+ky oaomy xioaozyn lik+qtdb.', g: '' },
+				{ m: 'matalin+ky pi+c+my oaoif xioaozyn tak+qtdb.', g: '' },
+				{ m: 'matalin+ky tlivy trrm pi+c+my pas tak+qtdb.', g: '' },
+			],
+		},{
+			name: 'Foghaven Waterfall South',
+			messages: [
+				{ m: 'pi+c+ky pas aiialamamyd erdif qtdb.', g: '' },
+				{ m: 'oaoky xioaozyn pas aiialamamyd erdif qtdb.', g: '' },
+				{ m: 'aiialamakyd erdif, grrdzyn u+phjr b+qtdd.', g: '' },
+				{ m: 'pi+c+ky pas aiialamamyd erdif caus+qtad.', g: '' },
+				{ m: 'erdky oaomy xioaozyn us+qtad.', g: '' },
+				{ m: 'erdky my pas caus+qtad.', g: '' },
+			],
+		},{
+			name: 'Shadowspring Citadel North',
+			messages: [
+				{ m: 'xioaokyd erdmy tlaicqtdd.', g: 'The darkness is aggressive.' }
+			],
+		}
+	];
+	
+	const knownBox = document.getElementById('known');
+	known.forEach((s) => {
+		const header = document.createElement('h3');
+		header.innerText = s.name;
+		knownBox.appendChild(header);
+		s.messages.forEach((msg) => {
+			appendNewMessageBox(knownBox, msg.m, msg.g);
+		});
+	});
+})();
+</script>
