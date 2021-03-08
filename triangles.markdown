@@ -13,19 +13,43 @@ hidden: true
   - Refer any in-game questions to Journeyman Fanan.
 - The epistemic status of all content herein is 'uncertain'.
 
-## Justification
+## Grammar
 
-Starting point: `m#tzlama` ('m+tzlama') appears to identify a person.  Possibly by name ('Mzlama'), possibly as a title — the `lama` (guru?) of the `m+tz`(sun).  Either way, `m+tzlama` is most likely a noun.
+Translations below are built on the following assumptions.
 
-Since `m+tzlamakyd` appears in the text, we infer that `kyd` ('kyd') is a noun declension.
+- Verbs bind to the nearest preceeding nouns.
+- `pas` (pas) means 'always' or 'every' and prefers to bind to the following word, unless followed by a comma, in which case it binds left.
+- `trrm` (trrm) is a generalized possessive pronoun (his/her/its/their) that binds to the preceeding word.
+- Possessives &mdash; ending in `if` (-if) &mdash; bind to the preceeding noun.
 
-The appearances of `m+tzlamakyd` are each followed by `erdif` ('erdif'), twice with a comma that suggests the two words form a complete phrase.  From this we infer that `erdif` is a verb.  As `erd` frequently appears with different suffixes, we infer that `erd` is the root verb, and that `if`, `ky`, and `my` ('if', 'ky', 'my') are likely verb conjugations.
+## Literal Translation
 
-Treating those as conjugations helps us identify other words that are likely to be verbs, and suggests that `vy` ('vy') is likely another conjugation.
+The manual translations below (in a script font) take some liberties with the text, trying to make the meaning clearer.  This is obviously error-prone.
 
-The parallel structure here (ending in 'y') suggests similarity.  The exception - `if` ('if') - may be telling; my current theory is that it indicates the infinitive.
+Some words in the triangle lexicon seem to have meanings that don't translate simply.
 
-(More to come)
+For instance, the examples below translate `qui` as 'time', but it seems to more precisely mean 'the forward passage of time' or perhaps more generally 'movement in the direction of increased entropy'.
+
+Similarly, we 'know' that `xioao` can mean 'an extinguished candle' or 'the extinguishing of a candle', but the examples below frequently translate it as 'death' because that seems to make more contextual sense.
+
+## Guessing
+
+Some of the words below are total guesses based on what contextually seems to make sense.  The most prominent guesses are:
+
+ - `caus+` (caus+) &mdash; command
+ - `us+` (us+) &mdash; implore
+ - `strp` (strp) &mdash; cease
+ - `b+` (b) &mdash; become
+ - `lik+` (lik+) &mdash; love
+ - `tlaic` (tlaic) &mdash; war
+
+At least some of the verb tenses seem to be slightly 'off', though there is a possibility that the author of the message erred grammatically once or twice.
+
+## Errors (OOC)
+
+There are some cases where the translation rubric doesn't make grammatical sense, but *does* make sense if we assume that the authors are English speakers who occassionally make mistakes.  Specifically I think there are spots where the subjunctive was incorrectly used only because in English the word is identical to a different tense.
+
+I don't want to lean to heavily on this explanation, but it does allow some degree of handwaving.
 
 ## Experimenting
 
