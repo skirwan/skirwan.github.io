@@ -3,12 +3,18 @@ layout: default
 ---
 <style>
 h2 {
-	font-weight: 100;
+	font-weight: 800;
 }
 h3 {
 	border:none;
 	margin-bottom: -10px;
 	padding-bottom: 0;
+	margin-top: 40px;
+	font-weight: 100;
+}
+
+.grammar-list h3 {
+	margin-top: 0;
 }
 
 .box {
@@ -131,10 +137,10 @@ h3 {
 	const aCode = 'a'.charCodeAt(0);
 	const zCode = 'z'.charCodeAt(0);
 	const prefixes = [
-		{ t: 'xi', m: 'un' },
-		{ t: 'omi', m: 'anti' },
+		{ t: 'xi', m: 'UN' },
+		{ t: 'omi', m: 'ANTI' },
 		{ t: 'caus+', m: 'command' },
-		{ t: 'us+', m: 'implore' },
+		{ t: 'us+', m: 'seek' },
 		{ t: 'strp', m: 'cease' },
 		{ t: 'b+', m: 'become' },
 		{ t: 'mapr', m: 'break/decay/close' },
@@ -142,52 +148,46 @@ h3 {
 		{ t: 'tlaic', m: 'war' },
 	];
 	const suffixes = [
-		{ t: 'ky', m: 'subject-singular' },
-		{ t: 'my', m: 'to-singular' },
-		{ t: 'vy', m: 'from-singular' },
-		{ t: 'kyd', m: 'subject-plural' },
-		{ t: 'myd', m: 'to-plural' },
-		{ t: 'vyd', m: 'from-plural' },
-		{ t: 'zyn', m: 'with' },
+		{ t: 'ky', m: 'subject' },
+		{ t: 'my', m: 'to' },
+		{ t: 'vy', m: 'from' },
+		{ t: 'kyd', m: 'subject-class' },
+		{ t: 'myd', m: 'to-class' },
+		{ t: 'vyd', m: 'from-class' },
+		{ t: 'zyn', m: 'upon/against' },
 		{ t: 'if', m: 'possessive' },
-		{ t: 'qtad', m: 'past-singular' },
-		{ t: 'otad', m: 'past-plural' },
-
-		{ t: 'qtdd', m: 'progressive-plural' },
-		{ t: 'otdd', m: 'past-participle-plural' },
-
-		{ t: 'qtdb', m: 'subjunctive-singular' },
-		{ t: 'otdb', m: 'subjunctive-plural' },
-
 		{ t: 'ad', m: 'past' },
-		{ t: 'dd', m: 'progressive' },
+		{ t: 'dd', m: 'started' },
 		{ t: 'db', m: 'subjunctive' },
-		{ t: 'ot', m: 'quantifier-a' },
-		{ t: 'qt', m: 'quantifier-b' },
-		{ t: 'wt', m: 'accusative' },
+		{ t: 'ot', m: 'instant' },
+		{ t: 'qt', m: 'ongoing' },
+		{ t: 'wt', m: 'imperative' },
 
 		{ t: 'vai', m: 'participle' },
-		{ t: 'lama', m: 'master' },
+		{ t: 'lama', m: 'GURU' },
 		{ t: 'yet+', m: 'beginning' },
 		{ t: 'yet', m: 'middle' },
 	];
 	const vocabulary = [
-		{ t: 'pas', m: 'always' },
+		{ t: 'pas', m: 'singular-article' },
 		{ t: 'trrm', m: 'pronoun-possessive' },
-		{ t: 'erd', m: 'erd' },
-		{ t: 'oao', m: 'light' },
-		{ t: 'tzrt', m: 'orga' },
-		{ t: 'tzr', m: 'org' },
-		{ t: 'tli', m: 'materialplane' },
-		{ t: 'm+tz', m: 'sun' },
+		{ t: 'erd', m: 'Ancients' },
+		{ t: 'oao', m: 'LIGHT' },
+		{ t: 'tzrt', m: 'ORGA' },
+		{ t: 'tzr', m: 'ORG' },
+		{ t: 'tli', m: 'MATERIALPLANE' },
+		{ t: 'm+tz', m: 'SUN' },
 		{ t: 'aiia', m: 'moon' },
-		{ t: 'ctgn', m: 'earth?' },
-		{ t: 'tian', m: 'mirror' },
+		{ t: 'ctgn+', m: 'earth' },
+		{ t: 'tian', m: 'MIRROR' },
 		{ t: 'qui', m: 'time' },
 		{ t: 'pi+c+', m: 'pi+c+' },
-		{ t: 'axa', m: 'greymyr' },
-		{ t: 'maht', m: 'fear' },
-		{ t: 'kzi', m: 'advance' },
+		{ t: 'axa', m: 'GREYMYR' },
+		{ t: 'maht', m: 'FEAR' },
+		{ t: 'kzi', m: 'active' },
+		{ t: 'migg', m: 'join' },
+		{ t: 'ktw', m: 'essence' },
+		{ t: 'jrin', m: 'connect' },
 	]
 	
 	const stdToEmpressMap = {
@@ -243,7 +243,7 @@ h3 {
 		}, 2);
 	}
 
-	function buildGrammarEditorRow(listContainer, list, item) {
+	function buildGrammarEditorRow(listContainer, list, item, footer) {
 		const row = document.createElement('div');
 		row.className = 'row';
 
@@ -303,15 +303,15 @@ h3 {
 		});
 		row.appendChild(remove);
 
-		listContainer.appendChild(row);
+		listContainer.insertBefore(row, footer);
 
 		item.row = row;
 	}
 
-	function addRow(listContainer, list) {
+	function addRow(listContainer, list, footer) {
 		const item = { t: 'from', m: 'to' };
 		list.push(item);
-		buildGrammarEditorRow(listContainer, list, item);
+		buildGrammarEditorRow(listContainer, list, item, footer);
 
 		retranslate();
 	}
@@ -341,13 +341,13 @@ h3 {
 		});
 		header.appendChild(expand);
 		
-		list.forEach((item) => {
-			buildGrammarEditorRow(listContainer, list, item);
-		});
-
 		const addBlock = document.createElement('div');
 		addBlock.className = 'add-block';
 		listContainer.appendChild(addBlock);
+
+		list.forEach((item) => {
+			buildGrammarEditorRow(listContainer, list, item, addBlock);
+		});
 
 		const add = document.createElement('a');
 		add.href = '#';
@@ -355,7 +355,7 @@ h3 {
 		add.innerText = '[add]';
 		add.addEventListener('click', (evt) => {
 			evt.preventDefault();
-			addRow(listContainer, list);
+			addRow(listContainer, list, addBlock);
 		});
 		addBlock.appendChild(add);
 
@@ -569,7 +569,7 @@ h3 {
 			
 			if (idx < symbols.length) {
 				const span = document.createElement('code');
-				transliterate(symbols[idx], span);
+				transliterate(symbols[idx].slice(1, -1), span);
 				//span.innerHTML = '(' + span.innerHTML + ')'
 				containerNode.appendChild(span);
 			}
@@ -601,25 +601,25 @@ h3 {
 		{
 			name: "Cloud Alchemy Lab", 
 			messages: [
-				{ m: 'erdky ktwvy aiiaif ktwmy ctgn#if pas miggqtad.', g: 'Erd always <migg>ed from the moon\'s <ktw> to <ctgn+>\'s <ktw>.' },
+				{ m: 'erdky ktwvy aiiaif ktwmy ctgn#if pas miggqtad.', g: 'The Ancients joined moon\'s essence to the earth\'s essence.' },
 			],
 		},{
 			name: 'Ancient Bear Cave West',
 			messages: [
-				{ m: 'erdky xioaomyd pas xilik+qtad.', g: 'Erd always hated death' },
-				{ m: 'erdky quimy strpqtad caus+vai xioaokyd pas strpotdd.', g: 'Erd halted time, causing death stopping forever.' },
-				{ m: 'erdky oaomy xioaozyn us+qtad.', g: 'Erd begged the Light for assistance with death.' },
-				{ m: 'erdky tzrtmyd caus+qtad.', g: 'Erd commanded orga' },
-				{ m: 'erdky tzrvyd tzrtmyd b+otdd, caus+qtad.', g: 'Erd commanded the org becoming the orga' },
+				{ m: 'erdky xioaomyd pas xilik+qtad.', g: 'The Ancients hated the Darkness' },
+				{ m: 'erdky quimy strpqtad caus+vai xioaokyd pas strpotdd.', g: 'The Ancients paused time, temporarily halting the Darkness' },
+				{ m: 'erdky oaomy xioaozyn us+qtad.', g: 'The Ancients sought to light the darkness.' },
+				{ m: 'erdky tzrtmyd caus+qtad.', g: 'The Ancients were in command of orga' },
+				{ m: 'erdky tzrvyd tzrtmyd b+otdd, caus+qtad.', g: 'The Ancients commanded that org begin becoming orga' },
 			],
 		},{
 			name: 'Ancient Bear Cave East (Reversed*)',
 			messages: [
-				{ m: 'tzrtkyd erdmy tlaicqtdd.', g: 'The orga were warring upon Erd' },
-				{ m: 'tzrtkyd quimy xistrpqtdd.', g: 'The orga were un-halting time' },
-				{ m: 'tzrtkyd erdmy xilik#qtdd.', g: 'The orga were hating Erd' },
-				{ m: 'erdky tzrtmyd us#qtad caus#vai quiky strpotad.', g: 'Erd implored the orga, commanding time stop' },
-				{ m: 'erdky oaomy xioaozyn us#qtad caus#vai tzrtkyd caus#qtad.', g: 'Erd begged the Light for assistance with death, commanding that the orga be controlled' },
+				{ m: 'tzrtkyd erdmy tlaicqtdd.', g: 'The orga began to war upon the Ancients' },
+				{ m: 'tzrtkyd quimy xistrpqtdd.', g: 'The orga restarted time' },
+				{ m: 'tzrtkyd erdmy xilik#qtdd.', g: 'The orga began to hate the Ancients' },
+				{ m: 'erdky tzrtmyd us#qtad caus#vai quiky strpotad.', g: 'The Ancients asked of the orga that time stop' },
+				{ m: 'erdky oaomy xioaozyn us#qtad caus#vai tzrtkyd caus#qtad.', g: 'The Ancients sought to light the darkness, commanding that the orga be controlled' },
 			],
 		},{
 			name: 'Northern Ruins Outer - Original',
@@ -630,96 +630,96 @@ h3 {
 		},{
 			name: 'Northern Ruins Outer - Charged (Partially?)',
 			messages: [
-				{ m: 'ky tzrmyd xilik+qtdb.', g: 'One would love the org' },
-				{ m: 'ky ximihmy xilik+qtdb.', g: 'One would hate the un<mih>' },
+				{ m: 'ky tzrmyd xilik+qtdb.', g: '' },
+				{ m: 'ky ximihmy xilik+qtdb.', g: '' },
 			],
 		},{
 			name: 'Northern Ruins North',
 			messages: [
-				{ m: 'erdky tzrmyd caus+qtad.', g: 'Erd commanded the org' },
-				{ m: 'quiky kzizyn b+qtdb.', g: 'Time would become moving' },
-				{ m: 'quiky xikzizyn b+qtdb.', g: 'Time would become unmoving' },
+				{ m: 'erdky tzrmyd caus+qtad.', g: 'The Ancients were in command of the org' },
+				{ m: 'quiky kzizyn b+qtdb.', g: 'Time would become active' },
+				{ m: 'quiky xikzizyn b+qtdb.', g: 'Time would become inactive' },
 			],
 		},{
 			name: 'Northern Ruins West',
 			messages: [
-				{ m: 'tzrkyd quimy xikzizyn caus+otad.', g: 'The org commanded time to freeze' },
-				{ m: 'erdky tzrmyd caus+qtad caus+vai quiky xikziotdb.', g: 'Erd commanded the org, commanding that time freeze' },
+				{ m: 'tzrkyd quimy xikzizyn caus+otad.', g: 'The org commanded time to become inactive' },
+				{ m: 'erdky tzrmyd caus+qtad caus+vai quiky xikziotdb.', g: 'The Ancients were in command of the org, commanding that time be inactive' },
 			],
 		},{
 			name: 'Northern Ruins East',
 			messages: [
-				{ m: 'erdky tzrmyd dw+llqtad clrs+jr caus+vai quiky erdif xikziotdb.', g: 'Erd <dw+ll>ed <clrs+jr> (adverb?) to the org commanding that Erd\'s time freeze.' },
-				{ m: 'erdky tzrmyd dw+llqtad clrs+jr.', g: 'Erd <dw+ll>ed <clrs+jr> (adverb?) to the org' },
-				{ m: 'quiky erdif xikziqtdb caus+vai erdky ximihqtad.', g: 'That Erd\'s time be frozen, commanding Erd un<mih>ed.' },
+				{ m: 'erdky tzrmyd dw+llqtad clrs+jr caus+vai quiky erdif xikziotdb.', g: 'The Ancients <dw+ll>ed <clrs+jr> (adverb?) to the org, commanding that the Ancients\' time be inactive.' },
+				{ m: 'erdky tzrmyd dw+llqtad clrs+jr.', g: 'The Ancients <dw+ll>ed <clrs+jr> (adverb?) to the org' },
+				{ m: 'quiky erdif xikziqtdb caus+vai erdky ximihqtad.', g: 'The Ancients\' time being frozen required that the Ancients un<mih>.' },
 			],
 		},{
 			name: 'Windweft Ice Cave',
 			messages: [
-				{ m: 'oaoky pas, xioaozyn b#qtdb vaic oaoky pas, oaozyn b#qtdb.', g: 'That every light be extinguished <vaic> every light become with light' },
-				{ m: 'm#tzlamakyd erdif tianmy caus#qtad.', g: 'Erd\'s sun masters commanded the mirror' },
-				{ m: 'tianky pas omitlimy trrm jrinqtdb.', g: 'The mirror would <jrin> always to its shadow plane' },
-				{ m: 'tianky pas tlivy trrm omitlimy trrm jrinqtdb.', g: 'The mirror would <jrin> from its material plane always to its shadow plane' },
-				{ m: 'erdky tianmy pas us#qtad.', g: 'Erd always implored the mirror' },
+				{ m: 'oaoky pas, xioaozyn b#qtdb vaic oaoky pas, oaozyn b#qtdb.', g: 'That the Light be darkening <vaic> that the Light be brightened' },
+				{ m: 'm#tzlamakyd erdif tianmy caus#qtad.', g: 'The Ancients\' sun masters were in commmand of mirror' },
+				{ m: 'tianky pas omitlimy trrm jrinqtdb.', g: 'The mirror would connect to its shadow plane' },
+				{ m: 'tianky pas tlivy trrm omitlimy trrm jrinqtdb.', g: 'The mirror would connect its material plane to its shadow plane' },
+				{ m: 'erdky tianmy pas us#qtad.', g: 'The ancients sought the mirror' },
 				{ m: 'omitliky xioaozyn b#qtdb.', g: 'The shadow plane would become with darkness' },
 				{ m: 'omitliky oaozyn b#qtdb.', g: 'The shadow plane would become with light' },
-				{ m: 'm#tzlamakyd erdif, amazdzyn b#qtdd.', g: 'Erd\'s sun masters would become <amazd> (amazed?)' },
-				{ m: 'oaoky pas, oaozyn u#phjr b#qtdb.', g: 'Every light would become with light <u+phjr> (adverb?)' },
-				{ m: 'oaoky pas, oaomy m#tzif grrdzyn sam#jr b#qtdb.', g: 'Every light would become with <grrd> to the sun\'s light <sam#jr> (adverb?)' },
+				{ m: 'm#tzlamakyd erdif, amazdzyn b#qtdd.', g: 'The Ancients\' sun masters became <amazd>' },
+				{ m: 'oaoky pas, oaozyn u#phjr b#qtdb.', g: 'The Light would become <u+phjr> with light' },
+				{ m: 'oaoky pas, oaomy m#tzif grrdzyn sam#jr b#qtdb.', g: 'The Light would become <sam#jr> upon <grrd> to the sun\'s light' },
 			],
 		},{
 			name: 'Foghaven Crossroads',
 			messages: [
-				{ m: 'xioaokyd pas oaomy xioaozyn lik#qtdd.', g: 'Death was loving (honoring?) always the light with death' },
-				{ m: 'xioaokyd pas oaomy xioaozyn trrm crmdqtdd.', g: 'Death was <crmd>ing always to the light with its death' },
-				{ m: 'xioaokyd pas tianmy pas us#qtdd.', g: 'Death imploring always to every mirror' },
-				{ m: 'xioaokyd pas tlimy trrm crmdqtdd.', g: 'Death <crmd>ing always to its material plane' },
-				{ m: 'xioaokyd erdmy xilik#qtdd.', g: 'Death hating Erd' },
-				{ m: 'm#tzlamakyd erdif, mahtzyn b#qtdd.', g: 'Erd\'s sun masters becoming frightened' },
+				{ m: 'xioaokyd pas oaomy xioaozyn lik#qtdd.', g: 'The Darkness began loving light upon darkness' },
+				{ m: 'xioaokyd pas oaomy xioaozyn trrm crmdqtdd.', g: 'The Darkness began <crmd>ing light against its darkness' },
+				{ m: 'xioaokyd pas tianmy pas us#qtdd.', g: 'The Darkness began seeking the mirror' },
+				{ m: 'xioaokyd pas tlimy trrm crmdqtdd.', g: 'The Darkness began <crmd>ing its material plane' },
+				{ m: 'xioaokyd erdmy xilik#qtdd.', g: 'Darkness began to hate the Ancients' },
+				{ m: 'm#tzlamakyd erdif, mahtzyn b#qtdd.', g: 'The Ancients\' sun masters began to fear' },
 			],
 		},{
 			name: 'GMV Ruins',
 			messages: [
-				{ m: 'xioaokyd pas xistrpqtdd.', g: 'Death always resuming' },
-				{ m: 'erdky, mahtzyn b#qtad.', g: 'Erd became frightened' },
-				{ m: 'erdky tianmyd us#qtad.', g: 'Erd implored to the mirrors' },
-				{ m: 'erdky m#tzyet#my pas trrm grqtdb.', g: 'Erd <gr> (would?) that sunrise always [be] (his? her?)' },
-				{ m: 'erdky tianmyd us#qtad caus#vai m#tzyet#ky pas trrm grwtdb.', g: 'Erd implored to the mirrors causing that sunrise <gr> [be?] always his' },
-				{ m: 'm#tzyet#ky pas m#tzyetmy pas maprqtdb.', g: 'Every sunrise would progress always to daytime' },
-				{ m: 'erdky pas m#tzyetmy pas maprqtad.', g: 'Erd always progressed to every daytime' },
-				{ m: 'tiankyd pas xiplacdmyd trrm jrinqtdd.', g: 'Mirror <jrin>ing always to their un<placd>' },
-				{ m: 'tiankyd pas maprqtdd.', g: 'Mirrors always breaking' },
+				{ m: 'xioaokyd pas xistrpqtdd.', g: 'The Darkness was unrelenting' },
+				{ m: 'erdky, mahtzyn b#qtad.', g: 'The Ancients became afraid' },
+				{ m: 'erdky tianmyd us#qtad.', g: 'The Ancients sought the mirror' },
+				{ m: 'erdky m#tzyet#my pas trrm grqtdb.', g: 'The Ancients would <gr> that the past be theirs' },
+				{ m: 'erdky tianmyd us#qtad caus#vai m#tzyet#ky pas trrm grwtdb.', g: 'The ancients sought the mirror that the past <gr> theirs' },
+				{ m: 'm#tzyet#ky pas m#tzyetmy pas maprqtdb.', g: 'The past would age to the present' },
+				{ m: 'erdky pas m#tzyetmy pas maprqtad.', g: 'An ancient aged to the present' },
+				{ m: 'tiankyd pas xiplacdmyd trrm jrinqtdd.', g: 'The mirror began connecting to its un<placd>' },
+				{ m: 'tiankyd pas maprqtdd.', g: 'The mirror began aging' },
 			],
 		},{
 			name: 'Foghaven Waterfall North',
 			messages: [
-				{ m: 'matalin+ky tianmy pas us+qtdb.', g: 'Mataline always implored to the mirror' },
-				{ m: 'matalin+ky oaomy xioaozyn lik+qtdb.', g: 'Mataline would love (honor?) the light with death' },
-				{ m: 'matalin+ky oaomy xioaozyn lik+qtdb.', g: 'Mataline would love (honor?) the light with death' },
-				{ m: 'matalin+ky pi+c+my oaoif xioaozyn tak+qtdb.', g: 'Mataline would <tak+> the light\s <pi+c+> with death' },
-				{ m: 'matalin+ky tlivy trrm pi+c+my pas tak+qtdb.', g: 'Mataline would always <tak+> from her material plane to <pi+c+>' },
+				{ m: 'matalin+ky tianmy pas us+qtdb.', g: 'Mataline would seek the mirror' },
+				{ m: 'matalin+ky oaomy xioaozyn lik+qtdb.', g: 'Mataline would love light upon darkness' },
+				{ m: 'matalin+ky oaomy xioaozyn lik+qtdb.', g: 'Mataline would love light upon darkness' },
+				{ m: 'matalin+ky pi+c+my oaoif xioaozyn tak+qtdb.', g: 'Mataline would <tak+> the light\'s <pi+c+> upon darkness' },
+				{ m: 'matalin+ky tlivy trrm pi+c+my pas tak+qtdb.', g: 'Mataline would <tak+> from her material plane to the <pi+c+>' },
 			],
 		},{
 			name: 'Foghaven Waterfall South',
 			messages: [
-				{ m: 'pi+c+ky pas aiialamamyd erdif qtdb.', g: 'The <pi+c+> would always to Erd\'s moon masters' },
-				{ m: 'oaoky xioaozyn pas aiialamamyd erdif qtdb.', g: 'The light would always to Erd\'s moon masters with death' },
-				{ m: 'aiialamakyd erdif, grrdzyn u+phjr b+qtdd.', g: 'Erd\'s moon masters' },
-				{ m: 'pi+c+ky pas aiialamamyd erdif caus+qtad.', g: 'The <pi+c+> commanded always to Erd\'s moon masters' },
-				{ m: 'erdky oaomy xioaozyn us+qtad.', g: 'Erd begged the Light for assistance with death' },
-				{ m: 'erdky my pas caus+qtad.', g: 'Erd always commanded to one' },
+				{ m: 'pi+c+ky pas aiialamamyd erdif qtdb.', g: 'The <pi+c+> would act upon the Ancients\' moon masters' },
+				{ m: 'oaoky xioaozyn pas aiialamamyd erdif qtdb.', g: 'Light would act upon the Ancients\' moon masters against darkness' },
+				{ m: 'aiialamakyd erdif, grrdzyn u+phjr b+qtdd.', g: 'The Ancients\' moon masters began becoming <u+phjr> upon <grrd>' },
+				{ m: 'pi+c+ky pas aiialamamyd erdif caus+qtad.', g: 'The <pi+c+> was in command of the Ancients\' moon masters' },
+				{ m: 'erdky oaomy xioaozyn us+qtad.', g: 'The Ancients sought to light the darkness' },
+				{ m: 'erdky my pas caus+qtad.', g: 'The Ancients commanded (you?)' },
 			],
 		},{
 			name: 'Shadowspring Citadel Level 1',
 			messages: [
-				{ m: 'xioaokyd erdmy tlaicqtdd.', g: 'The Shadows made war on Erd' },
-				{ m: 'erdky tianmyd pas ximaprqtad, qtad.', g: 'It was that Erd maintained the mirrors' },
-				{ m: 'erdky axamyd pas caus+qtad.', g: 'Erd always commanded greymyrs' },
-				{ m: 'axakyd pas tianmyd pas ximaprzyn caus+qtdd.', g: 'Greymyrs commanding all mirrors with always unbreaking (?)' },
-				{ m: 'axakyd pas maprqtdd', g: 'Greymyrs always breaking' },
-				{ m: 'axakyd srm+zyn maprqtdd.', g: 'Greymyrs breaking with <srm+>' },
-				{ m: 'erdky mahtzyn b+otad.', g: 'Erd became afraid' },
-				{ m: 'erdky mahtzyn axamyd pas rfrm b+otad.', g: 'Erd became afraid of greymyrs always <rfrm>' },
+				{ m: 'xioaokyd erdmy tlaicqtdd.', g: 'Darkness made war on the Ancients' },
+				{ m: 'erdky tianmyd pas ximaprqtad, qtad.', g: 'The Ancients had maintained the mirror' },
+				{ m: 'erdky axamyd pas caus+qtad.', g: 'The Ancients were in command of the Greymyr' },
+				{ m: 'axakyd pas tianmyd pas ximaprzyn caus+qtdd.', g: 'A Greymyr began commanding the maintenance of the mirror' },
+				{ m: 'axakyd pas maprqtdd', g: 'That Greymyr was aging' },
+				{ m: 'axakyd srm+zyn maprqtdd.', g: 'The Greymyrs began breaking upon <srm+>' },
+				{ m: 'erdky mahtzyn b+otad.', g: 'The Ancients became afraid' },
+				{ m: 'erdky mahtzyn axamyd pas rfrm b+otad.', g: 'The Ancients became <rfrm> afraid of (for?) that Greymyr' },
 			],
 		}
 	];
