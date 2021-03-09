@@ -36,6 +36,10 @@ h3 {
 	font-size: 15px;
 }
 
+.box textarea.alt, .box .textarea.alt {
+	background-color: #EEF;
+}
+
 .symbols { padding-left: 4px; background: white; }
 .symbols img { margin-left:-3px; margin-right:-3px; margin-top:-4px; }
 .symbols span { display:inline-block; width: 9px; }
@@ -97,6 +101,7 @@ h3 {
 	font-size: 15px;
 }
 .grammar-list .source { display: inline-block; }
+.grammar-list .source input { display: block; }
 .grammar-list .source .symbols { 
 	margin-top: 5px;
 	margin-bottom: -10px;
@@ -185,6 +190,43 @@ h3 {
 		{ t: 'kzi', m: 'advance' },
 	]
 	
+	const stdToEmpressMap = {
+		'd': 'l',
+		't': 'o',
+		'a': 'i',
+		'y': 't',
+		'i': 'm',
+		'r': 'g',
+		'k': 'v',
+		'q': 'j',
+		'+': 'n',
+		'u': 's',
+		'z': 'r',
+		's': 'k',
+		'm': 'b',
+		'o': 'd',
+		'x': 'a',
+		'e': 'e',
+		'c': 'w',
+		'l': 'f',
+		'b': '?',
+		'p': 'p',
+		'v': 'h',
+		'n': 'y',
+		'j': 'c',
+		'w': '∂',
+		'h': 'z',
+		',': ',',
+		'f': 'x',
+		'g': 'q',
+	}
+
+	const empressToStdMap = { };
+
+	Object.keys(stdToEmpressMap).forEach( (k) => {
+		empressToStdMap[stdToEmpressMap[k]] = k;
+	});
+
 	const translateListeners = [];
 
 	let needsTranslate = false;
@@ -214,6 +256,12 @@ h3 {
 		from.spellcheck = false;
 		source.appendChild(from);
 
+		const from2 = document.createElement('input');
+		from2.type = 'text';
+		from2.value = modeSwitch(item.t, stdToEmpressMap);
+		from2.spellcheck = false;
+		source.appendChild(from2);
+
 		const symbols = document.createElement('div');
 		symbols.className = 'symbols';
 		source.appendChild(symbols);
@@ -224,7 +272,7 @@ h3 {
 				retranslate();
 			}, 0);
 		});
-		watch(from, symbols, null);
+		watch(from, from2, symbols, null);
 		transliterate(item.t, symbols);
 		
 		row.appendChild(source);
@@ -422,33 +470,66 @@ h3 {
 		});
 	}
 	
-	function watch(sourceNode, symbolNode, lexemeNode) {
+	function modeSwitch(msg, map) {
+		const directValue = Array.from(msg).map((c) => c == '#' ? '+' : c).join('');
+		const altValue =  Array.from(directValue).map((c) => map[c] ?? c).join('');
+		return altValue;
+	}
+
+	function watch(stdNode, empressNode, symbolNode, lexemeNode) {
 		let dirty = false;
-		function translateIfNeeded() {
+		function translateIfNeeded(node, altNode, altMap, needsMapping) {
 			if (!dirty) return;
 			dirty = false;
-			transliterate(sourceNode.value, symbolNode);
+
+			const directValue = node.value;
+			const altValue =  modeSwitch(directValue, altMap);
+
+			const value = needsMapping ? altValue : directValue;
+			
+			transliterate(value, symbolNode);
 			if(lexemeNode) {
-				translate(sourceNode.value, lexemeNode);
+				translate(value, lexemeNode);
+			}
+			if(altNode) {
+				altNode.value = altValue;
 			}
 		}
 		
-		sourceNode.addEventListener('keyup', (evt) => {
+		stdNode.addEventListener('keyup', (evt) => {
 			dirty = true;
-			window.setTimeout(() => translateIfNeeded(), 1);
+			window.setTimeout(() => translateIfNeeded(stdNode, empressNode, stdToEmpressMap, false), 1);
 		});
+
+		if (empressNode) {
+			empressNode.addEventListener('keyup', (evt) => {
+				dirty = true;
+				window.setTimeout(() => translateIfNeeded(empressNode, stdNode, empressToStdMap, true), 1);
+			});
+		}
 	}
 	
 	function fillMessageBox(containerNode, message, readonly) {
 		let inbox = null;
+		let altInbox = null;
+
 		if (readonly) {
 			inbox = document.createElement('div');
 			inbox.innerText = message;
 			inbox.className = 'textarea';
+
+			altInbox = document.createElement('div');
+			altInbox.innerText = modeSwitch(message, stdToEmpressMap);
+			altInbox.className = 'textarea alt';
 		} else {
 			inbox = document.createElement('textarea');
 			inbox.value = message;
 			inbox.spellcheck = false;
+
+			altInbox = document.createElement('textarea');
+			altInbox.className = 'alt';
+			altInbox.value = modeSwitch(message, stdToEmpressMap)
+			altInbox.spellcheck = false;
 		}
 		
 		const symbolBox = document.createElement('div');
@@ -457,12 +538,13 @@ h3 {
 		lexemeBox.className = 'lexemes';
 		containerNode.appendChild(symbolBox);
 		containerNode.appendChild(inbox);
+		containerNode.appendChild(altInbox);
 		containerNode.appendChild(lexemeBox);
 		
 		transliterate(message, symbolBox);
 		
 		if (!readonly) {
-			watch(inbox, symbolBox, lexemeBox);
+			watch(inbox, altInbox, symbolBox, lexemeBox);
 		}
 
 		translate(message, lexemeBox);
