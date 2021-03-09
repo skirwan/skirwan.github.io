@@ -36,7 +36,7 @@ h3 {
 	font-size: 15px;
 }
 
-.box textarea.alt, .box .textarea.alt {
+.alt {
 	background-color: #EEF;
 }
 
@@ -260,6 +260,7 @@ h3 {
 		from2.type = 'text';
 		from2.value = modeSwitch(item.t, stdToEmpressMap);
 		from2.spellcheck = false;
+		from2.className = 'alt';
 		source.appendChild(from2);
 
 		const symbols = document.createElement('div');
