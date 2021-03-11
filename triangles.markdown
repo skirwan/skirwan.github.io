@@ -60,7 +60,7 @@ Any of these can add a `d` to mark a plural.
 Nouns may be followed by additional words that modify them:
 - Words ending in `zyn` are adjectives and attach to the preceeding noun
 - The word `pas` means 'the' and attaches to the preceeding noun
-- Words ending in `if` are possessives and indicate the `if` word owns the leading noun -- "word sentenceif" would be "word of sentence".
+- Words ending in `if` are possessives and indicate the `if` word owns the leading noun -- "word sentence`if`" would be "word of sentence".
 - Words ending in `rm` are prepositions and refer to the preceeding noun
 
 ## Verbs
