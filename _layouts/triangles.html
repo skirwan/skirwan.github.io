@@ -6,14 +6,13 @@ h2 {
 	font-weight: 800;
 }
 h3 {
-	border:none;
-	margin-bottom: -10px;
-	padding-bottom: 0;
-	margin-top: 40px;
-	font-weight: 100;
+    margin-top: 40px;
 }
 
 .grammar-list h3 {
+    border:none;
+	margin-bottom: -10px;
+	padding-bottom: 0;
 	margin-top: 0;
 }
 
@@ -47,7 +46,8 @@ h3 {
 }
 
 .symbols { padding-left: 4px; background: white; }
-.symbols img { margin-left:-3px; margin-right:-3px; margin-top:-4px; }
+.symbols img, .symbols img:only-child { margin-left:-3px; margin-right:-3px; margin-top:-4px; display: inline; }
+.lexemes img { margin-left:-3px; margin-right:-3px; margin-top:-4px; display: inline; }
 .symbols span { display:inline-block; width: 9px; }
 .symbols a { display:inline-block; margin-left:-6px; color: #333; text-decoration:none;}
 
@@ -75,7 +75,7 @@ h3 {
 #grammar-section {
 	margin-bottom: 30px;
 }
-.grammar-list { 
+.grammar-list {
 	background: #eee5e8;
 	margin-top: 10px;
 	border: 1px solid #ccc;
@@ -102,13 +102,13 @@ h3 {
 .grammar-list.collapse .add-block { display: none; }
 
 .grammar-list .row * { vertical-align: top; }
-.grammar-list .row input { 
+.grammar-list .row input {
 	font-family: monospace;
 	font-size: 15px;
 }
 .grammar-list .source { display: inline-block; }
 .grammar-list .source input { display: block; }
-.grammar-list .source .symbols { 
+.grammar-list .source .symbols {
 	margin-top: 5px;
 	margin-bottom: -10px;
 	background: transparent;
@@ -117,20 +117,25 @@ h3 {
 .add-block {
 	text-align: center;
 }
+
+.secret {
+    display:none;
+}
+.advanced .secret { display: inherit; }
 </style>
 
 <h1 class="page-title">Triangles</h1>
 
 {{ content }}
 
-<h2>Grammar</h2>
-<div id="grammar-section"></div>
+<h2 class="secret">Grammar</h2>
+<div class="secret" id="grammar-section"></div>
 
 <h2>Known Messages</h2>
 <div id="known"></div>
 
-<h2>Transliteration Checker</h2>
-<div class="box" id="checker"></div>
+<h2 class="secret" >Transliteration Checker</h2>
+<div class="box secret" id="checker"></div>
 
 <script>
 (function(){
@@ -139,39 +144,42 @@ h3 {
 	const prefixes = [
 		{ t: 'xi', m: 'UN' },
 		{ t: 'omi', m: 'ANTI' },
-		{ t: 'caus+', m: 'command' },
-		{ t: 'us+', m: 'seek' },
-		{ t: 'strp', m: 'cease' },
-		{ t: 'b+', m: 'become' },
-		{ t: 'mapr', m: 'break/decay/close' },
-		{ t: 'lik+', m: 'love' },
-		{ t: 'tlaic', m: 'war' },
+		{ t: 'caus+', m: 'CAUSE' },
+		{ t: 'us+', m: 'USE' },
+		{ t: 'strp', m: 'STOP' },
+		{ t: 'b+', m: 'BE' },
+		{ t: 'mapr', m: 'BREAK' },
+		{ t: 'lik+', m: 'LIKE' },
+		{ t: 'tlaic', m: 'WAR' },
 	];
 	const suffixes = [
 		{ t: 'ky', m: 'subject' },
-		{ t: 'my', m: 'to' },
-		{ t: 'vy', m: 'from' },
-		{ t: 'kyd', m: 'subject-class' },
-		{ t: 'myd', m: 'to-class' },
-		{ t: 'vyd', m: 'from-class' },
-		{ t: 'zyn', m: 'upon/against' },
+		{ t: 'my', m: 'object' },
+		{ t: 'vy', m: 'indirect-object' },
+		{ t: 'kyd', m: 'subject-plural' },
+		{ t: 'myd', m: 'object-plural' },
+		{ t: 'vyd', m: 'indirect-object-plural' },
+		{ t: 'zyn', m: 'adjective' },
 		{ t: 'if', m: 'possessive' },
-		{ t: 'ad', m: 'past' },
-		{ t: 'dd', m: 'started' },
-		{ t: 'db', m: 'subjunctive' },
-		{ t: 'ot', m: 'instant' },
-		{ t: 'qt', m: 'ongoing' },
+		{ t: 'ad', m: 'perfect-past' },
+		{ t: 'dd', m: 'imperfect-past' },
+		{ t: 'db', m: 'imperfect-future' },
+		{ t: 'ot', m: 'subjunctive' },
+		{ t: 'qt', m: 'indicative' },
 		{ t: 'wt', m: 'imperative' },
-
-		{ t: 'vai', m: 'participle' },
-		{ t: 'lama', m: 'GURU' },
-		{ t: 'yet+', m: 'beginning' },
-		{ t: 'yet', m: 'middle' },
+		{ t: 'vai', m: 'conjunction' },
+		{ t: 'lama', m: 'PRIEST' },
+		{ t: 'yet+', m: 'BEGINNING' },
+		{ t: 'yet', m: 'MIDDLE' },
+		{ t: 'jr', m: 'adverb' },
+		{ t: 'gr', m: 'GO' },
+		{ t: 'rm', m: 'preposition' },
 	];
 	const vocabulary = [
 		{ t: 'pas', m: 'singular-article' },
-		{ t: 'trrm', m: 'pronoun-possessive' },
-		{ t: 'erd', m: 'Ancients' },
+		{ t: 'tr', m: 'to' },
+		{ t: 'rf', m: 'of' },
+		{ t: 'erd', m: 'Joe' },
 		{ t: 'oao', m: 'LIGHT' },
 		{ t: 'tzrt', m: 'ORGA' },
 		{ t: 'tzr', m: 'ORG' },
@@ -180,16 +188,21 @@ h3 {
 		{ t: 'aiia', m: 'moon' },
 		{ t: 'ctgn+', m: 'earth' },
 		{ t: 'tian', m: 'MIRROR' },
-		{ t: 'qui', m: 'time' },
-		{ t: 'pi+c+', m: 'pi+c+' },
+		{ t: 'qui', m: 'TIME' },
+		{ t: 'pi+c+', m: 'PIECE' },
 		{ t: 'axa', m: 'GREYMYR' },
 		{ t: 'maht', m: 'FEAR' },
-		{ t: 'kzi', m: 'active' },
-		{ t: 'migg', m: 'join' },
-		{ t: 'ktw', m: 'essence' },
-		{ t: 'jrin', m: 'connect' },
+		{ t: 'kzi', m: 'fast' },
+		// { t: 'migg', m: 'migg' },
+		// { t: 'ktw', m: 'ktw' },
+		{ t: 'dw+ll', m: 'DWELL' },
+		{ t: 'jrin', m: 'JOIN' },
+        { t: 'mih', m: 'DEATH' },
+        { t: 'clrs', m: 'CARELESS' },
+        { t: 'sam#', m: 'SAME' },
+        { t: 'grrd', m: 'good' },
 	]
-	
+
 	const stdToEmpressMap = {
 		'd': 'l',
 		't': 'o',
@@ -237,7 +250,7 @@ h3 {
 		window.setTimeout(() => {
 			if(needsTranslate) {
 				needsTranslate = false;
-				
+
 				translateListeners.forEach((callback) => callback());
 			}
 		}, 2);
@@ -266,7 +279,7 @@ h3 {
 		const symbols = document.createElement('div');
 		symbols.className = 'symbols';
 		source.appendChild(symbols);
-		
+
 		from.addEventListener('keyup', (evt) => {
 			setTimeout(() => {
 				item.t = from.value;
@@ -275,7 +288,7 @@ h3 {
 		});
 		watch(from, from2, symbols, null);
 		transliterate(item.t, symbols);
-		
+
 		row.appendChild(source);
 
 		row.appendChild(document.createTextNode('→'))
@@ -337,10 +350,10 @@ h3 {
 				listContainer.classList.add('collapse');
 				expand.innerText = '[expand]';
 			}
-			
+
 		});
 		header.appendChild(expand);
-		
+
 		const addBlock = document.createElement('div');
 		addBlock.className = 'add-block';
 		listContainer.appendChild(addBlock);
@@ -390,32 +403,32 @@ h3 {
 			let el = null;
 			if ( code >= aCode && code <= zCode ) {
 				el = document.createElement('img');
-				el.src = "{{ "/assets/triangles/" | relative_url }}" + ( 3818 + (code - aCode) * 2 + idx % 2 ) + ".png" 
+				el.src = "{{ "/assets/triangles/" | relative_url }}" + ( 3818 + (code - aCode) * 2 + idx % 2 ) + ".png"
 			} else if ( c == "+" || c == "#" ) {
 				el = document.createElement('img');
-				el.src = "{{ "/assets/triangles/" | relative_url }}" + ( 3870 + idx % 2 ) + ".png" 
+				el.src = "{{ "/assets/triangles/" | relative_url }}" + ( 3870 + idx % 2 ) + ".png"
 			} else if ( c == "," ) {
 				el = document.createElement('img');
-				el.src = "{{ "/assets/triangles/" | relative_url }}" + ( 3874 + idx % 2 ) + ".png" 
+				el.src = "{{ "/assets/triangles/" | relative_url }}" + ( 3874 + idx % 2 ) + ".png"
 			}  else if ( c == "." ) {
 				el = document.createElement('img');
-				el.src = "{{ "/assets/triangles/" | relative_url }}" + ( 3876 + idx % 2 ) + ".png" 
+				el.src = "{{ "/assets/triangles/" | relative_url }}" + ( 3876 + idx % 2 ) + ".png"
 			} else /* if ( c == " ") */ {
 				el = document.createElement('span');
 			}
 			triangleNode.appendChild(el)
 		});
 	};
-	
+
 	function translate(msg, lexemeNode) {
 		Array.from(lexemeNode.childNodes).forEach((n)=>lexemeNode.removeChild(n));
-		
+
 		let words = msg.toLowerCase().split(/[^a-z\+\#]/).filter((s)=>!!s)
 		words.forEach((w) => {
 			w = w.replaceAll('#', '+');
 
 			let start = '';
-			
+
 			let dirty = true;
 			while (dirty) {
 				dirty = false;
@@ -428,9 +441,9 @@ h3 {
 					}
 				});
 			}
-			
+
 			let end = '';
-			
+
 			dirty = true;
 			while (dirty) {
 				dirty = false;
@@ -443,7 +456,7 @@ h3 {
 					}
 				});
 			}
-			
+
 			let found = false
 			vocabulary.forEach((p) => {
 				if (w == p.t) {
@@ -451,26 +464,36 @@ h3 {
 					found = true
 				}
 			});
-			
+
 			if (!found && !!w) {
 				w = '[' + w + ']';
 			}
-			
-			let built = '';
-			if (start) { built = start; }
-			if (w) { 
-				if (built) { built += '-'; }
-				built += w;
-			}
-			if (end) {
-				if (built) { built += '-'; }
-				built += end;
-			}
-			
-			lexemeNode.appendChild(document.createTextNode(built + ' '));
+
+            if (w && w[0] == '[') {
+                if (start) lexemeNode.appendChild(document.createTextNode(start + '-'));
+
+                transliterate(w, lexemeNode, true);
+
+                if (end) lexemeNode.appendChild(document.createTextNode('-' + end));
+
+                lexemeNode.appendChild(document.createTextNode(' '));
+            } else {
+                let built = '';
+                if (start) { built = start; }
+                if (w) {
+                    if (built) { built += '-'; }
+                    built += w;
+                }
+                if (end) {
+                    if (built) { built += '-'; }
+                    built += end;
+                }
+
+                lexemeNode.appendChild(document.createTextNode(built + ' '));
+            }
 		});
 	}
-	
+
 	function modeSwitch(msg, map) {
 		const directValue = Array.from(msg).map((c) => c == '#' ? '+' : c).join('');
 		const altValue =  Array.from(directValue).map((c) => map[c] ?? c).join('');
@@ -487,7 +510,7 @@ h3 {
 			const altValue =  modeSwitch(directValue, altMap);
 
 			const value = needsMapping ? altValue : directValue;
-			
+
 			transliterate(value, symbolNode);
 			if(lexemeNode) {
 				translate(value, lexemeNode);
@@ -496,7 +519,7 @@ h3 {
 				altNode.value = altValue;
 			}
 		}
-		
+
 		stdNode.addEventListener('keyup', (evt) => {
 			dirty = true;
 			window.setTimeout(() => translateIfNeeded(stdNode, empressNode, stdToEmpressMap, false), 1);
@@ -509,7 +532,7 @@ h3 {
 			});
 		}
 	}
-	
+
 	function fillMessageBox(containerNode, message, readonly) {
 		let inbox = null;
 		let altInbox = null;
@@ -517,22 +540,23 @@ h3 {
 		if (readonly) {
 			inbox = document.createElement('div');
 			inbox.innerText = message;
-			inbox.className = 'textarea';
+			inbox.className = 'textarea secret';
 
 			altInbox = document.createElement('div');
 			altInbox.innerText = modeSwitch(message, stdToEmpressMap);
-			altInbox.className = 'textarea alt';
+			altInbox.className = 'textarea alt secret';
 		} else {
 			inbox = document.createElement('textarea');
-			inbox.value = message;
+			inbox.className = 'secret';
+            inbox.value = message;
 			inbox.spellcheck = false;
 
 			altInbox = document.createElement('textarea');
-			altInbox.className = 'alt';
+			altInbox.className = 'alt secret';
 			altInbox.value = modeSwitch(message, stdToEmpressMap)
 			altInbox.spellcheck = false;
 		}
-		
+
 		const symbolBox = document.createElement('div');
 		symbolBox.className = 'symbols';
 		const lexemeBox = document.createElement('div');
@@ -541,9 +565,9 @@ h3 {
 		containerNode.appendChild(inbox);
 		containerNode.appendChild(altInbox);
 		containerNode.appendChild(lexemeBox);
-		
+
 		transliterate(message, symbolBox);
-		
+
 		if (!readonly) {
 			watch(inbox, altInbox, symbolBox, lexemeBox);
 		}
@@ -555,18 +579,18 @@ h3 {
 			translate(from, lexemeBox);
 		});
 	}
-	
+
 	fillMessageBox(document.getElementById('checker'), 'type here', false);
-	
+
 	function interpolate(containerNode, message) {
 		const text = message.split(/<[^>]+>/);
 		const symbols = message.match(/<[^>]+>/g) ?? [];
-		
+
 		text.forEach((t, idx) => {
 			if (t) {
 				containerNode.appendChild(document.createTextNode(t));
 			}
-			
+
 			if (idx < symbols.length) {
 				const span = document.createElement('code');
 				transliterate(symbols[idx].slice(1, -1), span);
@@ -580,150 +604,150 @@ h3 {
 		div.className = 'box';
 		containerNode.appendChild(div);
 		fillMessageBox(div, message, true);
-		
+
 		if (guess) {
 			const g = document.createElement('div');
 			g.className = 'guess';
 			div.appendChild(g);
-			
+
 			interpolate(g, guess);
 		}
 	}
-	
+
 	Array.from(document.getElementsByTagName('code')).forEach((code) => {
-		const message = code.innerText;
+		const message = code.innerHTML;
 		code.className += ' symbols';
 		code.innerHTML = '';
 		transliterate(message, code)
 	});
-	
+
 	const known = [
 		{
-			name: "Cloud Alchemy Lab", 
+			name: "Cloud Alchemy Lab",
 			messages: [
-				{ m: 'erdky ktwvy aiiaif ktwmy ctgn#if pas miggqtad.', g: 'The Ancients joined moon\'s essence to the earth\'s essence.' },
+				{ m: 'erdky ktwvy aiiaif ktwmy ctgn#if pas miggqtad.', g: 'Joe mixed (?) moon\'s <ktw> with the earth\'s <ktw>.' },
 			],
 		},{
 			name: 'Ancient Bear Cave West',
 			messages: [
-				{ m: 'erdky xioaomyd pas xilik+qtad.', g: 'The Ancients hated the Darkness' },
-				{ m: 'erdky quimy strpqtad caus+vai xioaokyd pas strpotdd.', g: 'The Ancients paused time, temporarily halting the Darkness' },
-				{ m: 'erdky oaomy xioaozyn us+qtad.', g: 'The Ancients sought to light the darkness.' },
-				{ m: 'erdky tzrtmyd caus+qtad.', g: 'The Ancients were in command of orga' },
-				{ m: 'erdky tzrvyd tzrtmyd b+otdd, caus+qtad.', g: 'The Ancients commanded that org begin becoming orga' },
+				{ m: 'erdky xioaomyd pas xilik+qtad.', g: 'Joe hated the shadows' },
+				{ m: 'erdky quimy strpqtad caus+vai xioaokyd pas strpotdd.', g: 'Joe stopped time, causing the shadows to be stopped' },
+				{ m: 'erdky oaomy xioaozyn us+qtad.', g: 'Joe used shadowy light.' },
+				{ m: 'erdky tzrtmyd caus+qtad.', g: 'Joe controlled the orga' },
+				{ m: 'erdky tzrvyd tzrtmyd b+otdd, caus+qtad.', g: 'Joe caused the org to become the orga' },
 			],
 		},{
 			name: 'Ancient Bear Cave East (Reversed*)',
 			messages: [
-				{ m: 'tzrtkyd erdmy tlaicqtdd.', g: 'The orga began to war upon the Ancients' },
+				{ m: 'tzrtkyd erdmy tlaicqtdd.', g: 'The orga made war on Joe' },
 				{ m: 'tzrtkyd quimy xistrpqtdd.', g: 'The orga restarted time' },
-				{ m: 'tzrtkyd erdmy xilik#qtdd.', g: 'The orga began to hate the Ancients' },
-				{ m: 'erdky tzrtmyd us#qtad caus#vai quiky strpotad.', g: 'The Ancients asked of the orga that time stop' },
-				{ m: 'erdky oaomy xioaozyn us#qtad caus#vai tzrtkyd caus#qtad.', g: 'The Ancients sought to light the darkness, commanding that the orga be controlled' },
+				{ m: 'tzrtkyd erdmy xilik#qtdd.', g: 'The orga hated Joe' },
+				{ m: 'erdky tzrtmyd us#qtad caus#vai quiky strpotad.', g: 'Joe used the orga to stop time' },
+				{ m: 'erdky oaomy xioaozyn us#qtad caus#vai tzrtkyd caus#qtad.', g: 'Joe used shadowy light to control the orga' },
 			],
 		},{
 			name: 'Northern Ruins Outer - Original',
 			messages: [
-				{ m: 'wt myd zyn  xiwtdb.', g: '' },
-				{ m: 'ky myd pas xiwtdb.', g: '' },
+				{ m: 'wt myd zyn  xiwtdb.', g: 'Do not act on these (?)' },
+				{ m: 'ky myd pas xiwtdb.', g: 'Do not act on one of these (?)' },
 			],
 		},{
 			name: 'Northern Ruins Outer - Charged (Partially?)',
 			messages: [
-				{ m: 'ky tzrmyd xilik+qtdb.', g: '' },
-				{ m: 'ky ximihmy xilik+qtdb.', g: '' },
+				{ m: 'ky tzrmyd xilik+qtdb.', g: 'It will hate org (?)' },
+				{ m: 'ky ximihmy xilik+qtdb.', g: 'It will hate undead (?)' },
 			],
 		},{
 			name: 'Northern Ruins North',
 			messages: [
-				{ m: 'erdky tzrmyd caus+qtad.', g: 'The Ancients were in command of the org' },
-				{ m: 'quiky kzizyn b+qtdb.', g: 'Time would become active' },
-				{ m: 'quiky xikzizyn b+qtdb.', g: 'Time would become inactive' },
+				{ m: 'erdky tzrmyd caus+qtad.', g: 'Joe commanded org' },
+				{ m: 'quiky kzizyn b+qtdb.', g: 'Time will be fast' },
+				{ m: 'quiky xikzizyn b+qtdb.', g: 'Time will be slow' },
 			],
 		},{
 			name: 'Northern Ruins West',
 			messages: [
-				{ m: 'tzrkyd quimy xikzizyn caus+otad.', g: 'The org commanded time to become inactive' },
-				{ m: 'erdky tzrmyd caus+qtad caus+vai quiky xikziotdb.', g: 'The Ancients were in command of the org, commanding that time be inactive' },
+				{ m: 'tzrkyd quimy xikzizyn caus+otad.', g: 'Org wished to make time slow' },
+				{ m: 'erdky tzrmyd caus+qtad caus+vai quiky xikziotdb.', g: 'Joe commanded org to slow time' },
 			],
 		},{
 			name: 'Northern Ruins East',
 			messages: [
-				{ m: 'erdky tzrmyd dw+llqtad clrs+jr caus+vai quiky erdif xikziotdb.', g: 'The Ancients <dw+ll>ed <clrs+jr> (adverb?) to the org, commanding that the Ancients\' time be inactive.' },
-				{ m: 'erdky tzrmyd dw+llqtad clrs+jr.', g: 'The Ancients <dw+ll>ed <clrs+jr> (adverb?) to the org' },
-				{ m: 'quiky erdif xikziqtdb caus+vai erdky ximihqtad.', g: 'The Ancients\' time being frozen required that the Ancients un<mih>.' },
+				{ m: 'erdky tzrmyd dw+llqtad clrs+jr caus+vai quiky erdif xikziotdb.', g: 'Beacuse Joe carelessly dwelled with orgs, Joe\'s time was going to slow.' },
+				{ m: 'erdky tzrmyd dw+llqtad clrs+jr.', g: 'Joe carelessly dwelled with orgs' },
+				{ m: 'quiky erdif xikziqtdb caus+vai erdky ximihqtad.', g: 'Because Joe\'s time was going to slow, he made himself undead' },
 			],
 		},{
 			name: 'Windweft Ice Cave',
 			messages: [
-				{ m: 'oaoky pas, xioaozyn b#qtdb vaic oaoky pas, oaozyn b#qtdb.', g: 'That the Light be darkening <vaic> that the Light be brightened' },
-				{ m: 'm#tzlamakyd erdif tianmy caus#qtad.', g: 'The Ancients\' sun masters were in commmand of mirror' },
-				{ m: 'tianky pas omitlimy trrm jrinqtdb.', g: 'The mirror would connect to its shadow plane' },
-				{ m: 'tianky pas tlivy trrm omitlimy trrm jrinqtdb.', g: 'The mirror would connect its material plane to its shadow plane' },
-				{ m: 'erdky tianmy pas us#qtad.', g: 'The ancients sought the mirror' },
-				{ m: 'omitliky xioaozyn b#qtdb.', g: 'The shadow plane would become with darkness' },
-				{ m: 'omitliky oaozyn b#qtdb.', g: 'The shadow plane would become with light' },
-				{ m: 'm#tzlamakyd erdif, amazdzyn b#qtdd.', g: 'The Ancients\' sun masters became <amazd>' },
-				{ m: 'oaoky pas, oaozyn u#phjr b#qtdb.', g: 'The Light would become <u+phjr> with light' },
-				{ m: 'oaoky pas, oaomy m#tzif grrdzyn sam#jr b#qtdb.', g: 'The Light would become <sam#jr> upon <grrd> to the sun\'s light' },
+				{ m: 'oaoky pas, xioaozyn b#qtdb vaic oaoky pas, oaozyn b#qtdb.', g: 'The Light was going to be dark or (?) the Light was going to be bright' },
+				{ m: 'm#tzlamakyd erdif tianmy caus#qtad.', g: 'Joe\'s sun priests controlled a mirror' },
+				{ m: 'tianky pas omitlimy trrm jrinqtdb.', g: 'The mirror would join to the Shadow Plane' },
+				{ m: 'tianky pas tlivy trrm omitlimy trrm jrinqtdb.', g: 'The mirror would join to the material plane and to the Shadow Plane' },
+				{ m: 'erdky tianmy pas us#qtad.', g: 'Joe used the mirror' },
+				{ m: 'omitliky xioaozyn b#qtdb.', g: 'The Shadow Plane was to become dark' },
+				{ m: 'omitliky oaozyn b#qtdb.', g: 'The Shadow Plane was to become light' },
+				{ m: 'm#tzlamakyd erdif, amazdzyn b#qtdd.', g: 'Joe\'s sun priests were amazed' },
+				{ m: 'oaoky pas, oaozyn u#phjr b#qtdb.', g: 'The Light was to become <u+ph>ly light' },
+				{ m: 'oaoky pas, oaomy m#tzif grrdzyn sam#jr b#qtdb.', g: 'The Light was to become the same as the good sun\'s light' },
 			],
 		},{
 			name: 'Foghaven Crossroads',
 			messages: [
-				{ m: 'xioaokyd pas oaomy xioaozyn lik#qtdd.', g: 'The Darkness began loving light upon darkness' },
-				{ m: 'xioaokyd pas oaomy xioaozyn trrm crmdqtdd.', g: 'The Darkness began <crmd>ing light against its darkness' },
-				{ m: 'xioaokyd pas tianmy pas us#qtdd.', g: 'The Darkness began seeking the mirror' },
-				{ m: 'xioaokyd pas tlimy trrm crmdqtdd.', g: 'The Darkness began <crmd>ing its material plane' },
-				{ m: 'xioaokyd erdmy xilik#qtdd.', g: 'Darkness began to hate the Ancients' },
-				{ m: 'm#tzlamakyd erdif, mahtzyn b#qtdd.', g: 'The Ancients\' sun masters began to fear' },
+				{ m: 'xioaokyd pas oaomy xioaozyn lik#qtdd.', g: 'The shadows liked shadowy light' },
+				{ m: 'xioaokyd pas oaomy xioaozyn trrm crmdqtdd.', g: 'The shadows crept to shadowy light' },
+				{ m: 'xioaokyd pas tianmy pas us#qtdd.', g: 'The shadows used the mirror' },
+				{ m: 'xioaokyd pas tlimy trrm crmdqtdd.', g: 'The shadows began crept to the material plane' },
+				{ m: 'xioaokyd erdmy xilik#qtdd.', g: 'The shadows hated Joe' },
+				{ m: 'm#tzlamakyd erdif, mahtzyn b#qtdd.', g: 'Joe\'s sun priests were afraid' },
 			],
 		},{
 			name: 'GMV Ruins',
 			messages: [
-				{ m: 'xioaokyd pas xistrpqtdd.', g: 'The Darkness was unrelenting' },
-				{ m: 'erdky, mahtzyn b#qtad.', g: 'The Ancients became afraid' },
-				{ m: 'erdky tianmyd us#qtad.', g: 'The Ancients sought the mirror' },
-				{ m: 'erdky m#tzyet#my pas trrm grqtdb.', g: 'The Ancients would <gr> that the past be theirs' },
-				{ m: 'erdky tianmyd us#qtad caus#vai m#tzyet#ky pas trrm grwtdb.', g: 'The ancients sought the mirror that the past <gr> theirs' },
-				{ m: 'm#tzyet#ky pas m#tzyetmy pas maprqtdb.', g: 'The past would age to the present' },
-				{ m: 'erdky pas m#tzyetmy pas maprqtad.', g: 'An ancient aged to the present' },
-				{ m: 'tiankyd pas xiplacdmyd trrm jrinqtdd.', g: 'The mirror began connecting to its un<placd>' },
-				{ m: 'tiankyd pas maprqtdd.', g: 'The mirror began aging' },
+				{ m: 'xioaokyd pas xistrpqtdd.', g: 'The shadows did not stop' },
+				{ m: 'erdky, mahtzyn b#qtad.', g: 'Joe was afraid' },
+				{ m: 'erdky tianmyd us#qtad.', g: 'Joe used mirrors' },
+				{ m: 'erdky m#tzyet#my pas trrm grqtdb.', g: 'Joe was going to go to the past' },
+				{ m: 'erdky tianmyd us#qtad caus#vai m#tzyet#ky pas trrm grwtdb.', g: 'Joe used mirrors (planning) to go to the past' },
+				{ m: 'm#tzyet#ky pas m#tzyetmy pas maprqtdb.', g: 'The past will break the present' },
+				{ m: 'erdky pas m#tzyetmy pas maprqtad.', g: 'A Joe broke the present' },
+				{ m: 'tiankyd pas xiplacdmyd trrm jrinqtdd.', g: 'The mirror joined to un-places' },
+				{ m: 'tiankyd pas maprqtdd.', g: 'The mirror broke' },
 			],
 		},{
 			name: 'Foghaven Waterfall North',
 			messages: [
-				{ m: 'matalin+ky tianmy pas us+qtdb.', g: 'Mataline would seek the mirror' },
-				{ m: 'matalin+ky oaomy xioaozyn lik+qtdb.', g: 'Mataline would love light upon darkness' },
-				{ m: 'matalin+ky oaomy xioaozyn lik+qtdb.', g: 'Mataline would love light upon darkness' },
-				{ m: 'matalin+ky pi+c+my oaoif xioaozyn tak+qtdb.', g: 'Mataline would <tak+> the light\'s <pi+c+> upon darkness' },
-				{ m: 'matalin+ky tlivy trrm pi+c+my pas tak+qtdb.', g: 'Mataline would <tak+> from her material plane to the <pi+c+>' },
+				{ m: 'matalin+ky tianmy pas us+qtdb.', g: 'Mataline will use the mirror' },
+				{ m: 'matalin+ky oaomy xioaozyn lik+qtdb.', g: 'Mataline will like shadowy light' },
+				{ m: 'matalin+ky oaomy xioaozyn lik+qtdb.', g: 'Mataline will like shadowy light' },
+				{ m: 'matalin+ky pi+c+my oaoif xioaozyn tak+qtdb.', g: 'Mataline will take the shadowy light\'s piece' },
+				{ m: 'matalin+ky tlivy trrm pi+c+my pas tak+qtdb.', g: 'Mataline will take the piece to the material plane' },
 			],
 		},{
 			name: 'Foghaven Waterfall South',
 			messages: [
-				{ m: 'pi+c+ky pas aiialamamyd erdif qtdb.', g: 'The <pi+c+> would act upon the Ancients\' moon masters' },
-				{ m: 'oaoky xioaozyn pas aiialamamyd erdif qtdb.', g: 'Light would act upon the Ancients\' moon masters against darkness' },
-				{ m: 'aiialamakyd erdif, grrdzyn u+phjr b+qtdd.', g: 'The Ancients\' moon masters began becoming <u+phjr> upon <grrd>' },
-				{ m: 'pi+c+ky pas aiialamamyd erdif caus+qtad.', g: 'The <pi+c+> was in command of the Ancients\' moon masters' },
-				{ m: 'erdky oaomy xioaozyn us+qtad.', g: 'The Ancients sought to light the darkness' },
-				{ m: 'erdky my pas caus+qtad.', g: 'The Ancients commanded (you?)' },
+				{ m: 'pi+c+ky pas aiialamamyd erdif qtdb.', g: 'The piece will act upon the Joe\'s moon priests' },
+				{ m: 'oaoky xioaozyn pas aiialamamyd erdif qtdb.', g: 'Joe\'s moon priests will act on shadowy light' },
+				{ m: 'aiialamakyd erdif, grrdzyn u+phjr b+qtdd.', g: 'Joe\'s moon priests were <u+ph>ly good' },
+				{ m: 'pi+c+ky pas aiialamamyd erdif caus+qtad.', g: 'The piece controlled Joe\'s moon priests' },
+				{ m: 'erdky oaomy xioaozyn us+qtad.', g: 'Joe used shadowy light' },
+				{ m: 'erdky my pas caus+qtad.', g: 'Joe caused it' },
 			],
 		},{
 			name: 'Shadowspring Citadel Level 1',
 			messages: [
-				{ m: 'xioaokyd erdmy tlaicqtdd.', g: 'Darkness made war on the Ancients' },
-				{ m: 'erdky tianmyd pas ximaprqtad, qtad.', g: 'The Ancients had maintained the mirror' },
-				{ m: 'erdky axamyd pas caus+qtad.', g: 'The Ancients were in command of the Greymyr' },
-				{ m: 'axakyd pas tianmyd pas ximaprzyn caus+qtdd.', g: 'A Greymyr began commanding the maintenance of the mirror' },
-				{ m: 'axakyd pas maprqtdd', g: 'That Greymyr was aging' },
-				{ m: 'axakyd srm+zyn maprqtdd.', g: 'The Greymyrs began breaking upon <srm+>' },
-				{ m: 'erdky mahtzyn b+otad.', g: 'The Ancients became afraid' },
-				{ m: 'erdky mahtzyn axamyd pas rfrm b+otad.', g: 'The Ancients became <rfrm> afraid of (for?) that Greymyr' },
+				{ m: 'xioaokyd erdmy tlaicqtdd.', g: 'Shadows made war on Joe' },
+				{ m: 'erdky tianmyd pas ximaprqtad, qtad.', g: 'Joe had the mirrors repaired' },
+				{ m: 'erdky axamyd pas caus+qtad.', g: 'Joe controlled the greymyrs' },
+				{ m: 'axakyd pas tianmyd pas ximaprzyn caus+qtdd.', g: 'The greymyrs controlled the repaired mirrors' },
+				{ m: 'axakyd pas maprqtdd', g: 'The greymyrs were breaking' },
+				{ m: 'axakyd srm+zyn maprqtdd.', g: 'Some (?) greymyrs were breaking' },
+				{ m: 'erdky mahtzyn b+otad.', g: 'Joe would be afraid' },
+				{ m: 'erdky mahtzyn axamyd pas rfrm b+otad.', g: 'Joe would be afraid from the greymyrs' },
 			],
 		}
 	];
-	
+
 	const knownBox = document.getElementById('known');
 	known.forEach((s) => {
 		const header = document.createElement('h3');
@@ -733,5 +757,9 @@ h3 {
 			appendNewMessageBox(knownBox, msg.m, msg.g);
 		});
 	});
+
+    if (document.location.search == '?advanced') {
+        document.body.className += ' advanced';
+    }
 })();
 </script>
