@@ -33,7 +33,7 @@ Despite difference in orthography, both of these messages means the same thing:
 
 The structure of a clause is:
 
-> noun [noun modifiers...] [noun [noun modifiers...]...] verb [adverb]
+> noun [modifiers...] [noun [modifiers...]...] verb [adverb]
 
 A clause alone is a valid sentence, or two clauses may be joined together with a conjunction.  Conjunctions are marked by the letters `vai`.  We have no examples of multiple conjunctions in the same sentence, and it isn't clear what the associativity would be in that situation.
 
