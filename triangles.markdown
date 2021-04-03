@@ -65,7 +65,15 @@ Nouns may be followed by additional words that modify them:
 
 ## Verbs
 
-All verbs are inflected with a four-character suffixes specifying the mood, aspect, and tense.
+All verbs are inflected with a four-character suffixes.  Our current working
+theory is that these suffixes combine to specify the mood, aspect, and tense.
+
+We are reasonably certain that our translation scheme for verb conjugation is
+not quite right yet; particularly the construct we've currently labeled the
+future tense does not seem entirely likely.  It is possible that some of the
+symbols actually denote whether the subject is animate or inanimate.  More study
+is needed.
+
 
 > verb-?`t`??
 
@@ -124,8 +132,40 @@ The following words have been painstakingly deduced from the triangular messages
 
 One of the most frequent words in the trianglular messages is the word `erd`; structurally the word appears to be singular, suggesting it refers to an individual rather than a group, though it's also possible it's a pronoun ('us') and that pronouns or some collective nouns follow different rules.
 
-Comparing the phonetics to `tzr` (org) has led some PSA members to hypothesize that it may be pronounced 'tgeau', which may suggest some connection to the mythological 'Josephus the Ancient'.  For the sake of clarity the document below translates `erd` as 'Joe'.
+Comparing the phonetics to `tzr` (org) has led some PSA members to hypothesize that the middle character has a frictive 'g' sound; this could indicate a sound like 'dgo' or, more idiomatically, 'joe'.  Some of the iconography associated with the mythical 'Josephus the Ancient' seems to be associated with the triangle script, making it difficult to exclude this possibility entirely.
+
+It's also possible that `erd` is a pronoun; it could be a reference to an unknown figure, or to the mythical 'Mataline the Mysic', who appears to be mentioned by name in several messages.
+
+For the sake of clarity the document below translates `erd` as 'Erd'.
 
 ## Order
 
 There appears to be no indication of a 'correct' order for reading the triangle messages, nor is there any clear indication that they are connected in a narrative structure.   Each 'set' of messages appears to be topically connected, however.  No effort has been made to reorder the following translations.
+
+## Open Questions and Mysteries
+
+- Who or what is `erd`?
+- The triangle inscriptions tell stories that clearly mimic the well-known
+  creation myth.  Are they the historical basis for that story?
+- What exactly is the `oaomy xioaozyn`, the 'shadowy light'?  Does it come from
+  the 'glowing Moon of the Land of Shadows' as our myths describe?  What
+  precisely did Mataline take?
+- What (and where) is the `omitlimy`?  It seems to correspond to the 'Land of
+  Shadows' of myth; the construction of the word suggests it's somehow a
+  modification of our plane.
+- Many inscriptions speak of the `xioao` -- the darkness, the shadows? -- as if
+  it/they were alive and in some sense thinking.  Is this metaphor?  Are these
+  beings or forces emanating from the `omitlimy`, perhaps corresonding to the
+  demons of legend?
+- The inscriptions near the Greymyr village seem to be describing a desperate
+  attempt at stopping the shadows using mirrors -- it almost seems to be saying
+  that `erd` tried to use them to travel through time.  In all other contexts,
+  however, the mirrors are used to travel through *space*.  Is this a
+  mistranslation or an insight into how mirrors work?
+- Who created all of this?  Were `erd` and Mataline the Ancients of our legends?
+  Did survivors of some prehistoric cataclysm settle here in the islands we
+  would later call the Lok'Grotons?
+- Several passages seem to speak of stopping or slowing time.  Is this why we
+  live despite dying?  Why we can depart to Purgatory?  Is this why so many
+  long-time residents seem to be stuck in loops?  Why we never age?  Is time
+  in Puddleby *still stopped*?  And if so, how long, exactly, have we been here?
