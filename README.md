@@ -11,6 +11,17 @@ To whatever extent the spirit or letter of that statement is unclear, it should
 be interpreted conservatively with respect to the author's rights -- where in
 doubt: this is mine, go away.
 
+## Setting Up
+
+Right now the VSCode terminal thinks it's running on an i386 architecture, which
+causes a lot of trouble for homebrew and rbenv/ruby_build.  Use the real
+terminal.
+
+1. Install homebrew
+2. `brew install rbenv`
+3. `rbenv install 2.7.5`
+4. `bundle install`
+
 ## Running
 
 ```bash
