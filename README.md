@@ -20,7 +20,8 @@ terminal.
 1. Install homebrew
 2. `brew install rbenv`
 3. `rbenv install 2.7.5`
-4. `bundle install`
+4. `gem install eventmachine -v '1.2.7' -- --with-openssl-dir=$(brew --prefix libressl)`
+5. `bundle install`
 
 ## Running
 
